@@ -41,8 +41,8 @@ final class DirectReadWriteShortBufferAdapter extends ShortBuffer implements Has
         super((byteBuffer.capacity() >> 1));
         this.byteBuffer = byteBuffer;
         this.byteBuffer.clear();
-        this.shortArray = new Int16Array(byteBuffer.getTypedArray(),
-                                         byteBuffer.getTypedArray().byteOffset,
+        this.shortArray = new Int16Array(byteBuffer.byteArray.buffer,
+                                         byteBuffer.byteArray.byteOffset,
                                          capacity);
     }
 

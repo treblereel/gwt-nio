@@ -35,4 +35,11 @@ public class TypedArrayHelper {
     public static ArrayBufferView unwrap(ByteBuffer bb) {
         return Js.<DirectByteBuffer>uncheckedCast(bb).getTypedArray();
     }
+
+    private static ByteBuffer buffer = ByteBuffer.allocate(1);
+
+    public static ByteBuffer stringToByteBuffer(String s) {
+        return buffer.stringToByteBuffer(s);
+    }
+
 }

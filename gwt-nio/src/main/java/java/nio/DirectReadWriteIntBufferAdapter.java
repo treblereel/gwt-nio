@@ -4,9 +4,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,13 +31,8 @@ import org.gwtproject.nio.HasArrayBufferView;
  * The adapter extends Buffer, thus has its own position and limit.</li>
  * </ul>
  * </p>
- * 
  */
 final class DirectReadWriteIntBufferAdapter extends IntBuffer implements HasArrayBufferView {
-
-    static IntBuffer wrap(DirectReadWriteByteBuffer byteBuffer) {
-        return new DirectReadWriteIntBufferAdapter((DirectReadWriteByteBuffer) byteBuffer.slice());
-    }
 
     private final DirectReadWriteByteBuffer byteBuffer;
     private final Int32Array intArray;
@@ -46,72 +41,18 @@ final class DirectReadWriteIntBufferAdapter extends IntBuffer implements HasArra
         super((byteBuffer.capacity() >> 2));
         this.byteBuffer = byteBuffer;
         this.byteBuffer.clear();
-        this.intArray = new Int32Array(byteBuffer.getTypedArray(),
-                                       byteBuffer.getTypedArray().byteOffset,
+        this.intArray = new Int32Array(byteBuffer.byteArray.buffer,
+                                       byteBuffer.byteArray.byteOffset,
                                        capacity);
     }
 
-    // TODO(haustein) This will be slow
-    @Override
-    public IntBuffer asReadOnlyBuffer() {
-        DirectReadOnlyIntBufferAdapter buf = new DirectReadOnlyIntBufferAdapter(byteBuffer);
-        buf.limit = limit;
-        buf.position = position;
-        buf.mark = mark;
-        return buf;
-    }
-
-    @Override
-    public IntBuffer compact() {
-        byteBuffer.limit(limit << 2);
-        byteBuffer.position(position << 2);
-        byteBuffer.compact();
-        byteBuffer.clear();
-        position = limit - position;
-        limit = capacity;
-        mark = UNSET_MARK;
-        return this;
-    }
-
-    @Override
-    public IntBuffer duplicate() {
-        DirectReadWriteIntBufferAdapter buf = new DirectReadWriteIntBufferAdapter(
-        		(DirectReadWriteByteBuffer) byteBuffer.duplicate());
-        buf.limit = limit;
-        buf.position = position;
-        buf.mark = mark;
-        return buf;
-    }
-
-    @Override
-    public int get() {
-//        if (position == limit) {
-//            throw new BufferUnderflowException();
-//        }
-        return intArray.getAt(position++).intValue();
-    }
-
-    @Override
-    public int get(int index) {
-//        if (index < 0 || index >= limit) {
-//            throw new IndexOutOfBoundsException();
-//        }
-        return intArray.getAt(index).intValue();
-    }
-
-    @Override
-    public boolean isDirect() {
-        return true;
+    static IntBuffer wrap(DirectReadWriteByteBuffer byteBuffer) {
+        return new DirectReadWriteIntBufferAdapter((DirectReadWriteByteBuffer) byteBuffer.slice());
     }
 
     @Override
     public boolean isReadOnly() {
         return false;
-    }
-
-    @Override
-    public ByteOrder order() {
-        return byteBuffer.order();
     }
 
     @Override
@@ -130,9 +71,55 @@ final class DirectReadWriteIntBufferAdapter extends IntBuffer implements HasArra
     }
 
     @Override
+    public IntBuffer slice() {
+        byteBuffer.limit(limit << 2);
+        byteBuffer.position(position << 2);
+        IntBuffer result = new DirectReadWriteIntBufferAdapter((DirectReadWriteByteBuffer)
+                                                                       byteBuffer.slice());
+        byteBuffer.clear();
+        return result;
+    }
+
+    @Override
+    public IntBuffer duplicate() {
+        DirectReadWriteIntBufferAdapter buf = new DirectReadWriteIntBufferAdapter(
+                (DirectReadWriteByteBuffer) byteBuffer.duplicate());
+        buf.limit = limit;
+        buf.position = position;
+        buf.mark = mark;
+        return buf;
+    }
+
+    // TODO(haustein) This will be slow
+    @Override
+    public IntBuffer asReadOnlyBuffer() {
+        DirectReadOnlyIntBufferAdapter buf = new DirectReadOnlyIntBufferAdapter(byteBuffer);
+        buf.limit = limit;
+        buf.position = position;
+        buf.mark = mark;
+        return buf;
+    }
+
+    @Override
+    public int get() {
+//        if (position == limit) {
+//            throw new BufferUnderflowException();
+//        }
+        return intArray.getAt(position++).intValue();
+    }
+
+    @Override
     public IntBuffer put(int c) {
-        intArray.setAt(position++, (double)c);
+        intArray.setAt(position++, (double) c);
         return this;
+    }
+
+    @Override
+    public int get(int index) {
+//        if (index < 0 || index >= limit) {
+//            throw new IndexOutOfBoundsException();
+//        }
+        return intArray.getAt(index).intValue();
     }
 
     @Override
@@ -140,35 +127,46 @@ final class DirectReadWriteIntBufferAdapter extends IntBuffer implements HasArra
 //        if (index < 0 || index >= limit) {
 //            throw new IndexOutOfBoundsException();
 //        }
-        intArray.setAt(index, (double)c);
+        intArray.setAt(index, (double) c);
         return this;
     }
 
     @Override
-    public IntBuffer slice() {
+    public IntBuffer compact() {
         byteBuffer.limit(limit << 2);
         byteBuffer.position(position << 2);
-        IntBuffer result = new DirectReadWriteIntBufferAdapter((DirectReadWriteByteBuffer) 
-        		byteBuffer.slice());
+        byteBuffer.compact();
         byteBuffer.clear();
-        return result;
+        position = limit - position;
+        limit = capacity;
+        mark = UNSET_MARK;
+        return this;
     }
 
-	public ArrayBufferView getTypedArray() {
-		return intArray;
-	}
+    @Override
+    public boolean isDirect() {
+        return true;
+    }
 
-	public DirectReadWriteByteBuffer getByteBuffer() {
-		return byteBuffer;
-	}
+    @Override
+    public ByteOrder order() {
+        return byteBuffer.order();
+    }
 
+    public ArrayBufferView getTypedArray() {
+        return intArray;
+    }
 
-	public int getElementSize() {
-		return 4;
-	}
+    public int getElementSize() {
+        return 4;
+    }
 
     @Override
     public int getElementType() {
         return 0x1404; // GL_INT
+    }
+
+    public DirectReadWriteByteBuffer getByteBuffer() {
+        return byteBuffer;
     }
 }

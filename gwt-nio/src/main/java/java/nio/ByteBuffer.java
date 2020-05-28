@@ -36,7 +36,8 @@ import org.apache.harmony.luni.platform.Endianness;
  * </ul>
  * @since Android 1.0
  */
-public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer> {
+public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer>,
+                                                           StringToByteBuffer{
 
   
     /**
@@ -1170,6 +1171,6 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
     }
     
     public ByteBuffer stringToByteBuffer(String s) {
-    	return new StringByteBuffer(s);
+    	return new java.nio.StringByteBuffer(s);
     }
 }
