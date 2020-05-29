@@ -102,26 +102,17 @@ final class DirectReadWriteShortBufferAdapter extends ShortBuffer implements Has
 
     @Override
     public short get() {
-//        if (position == limit) {
-//            throw new BufferUnderflowException();
-//        }
         return shortArray.getAt(position++).shortValue();
     }
 
     @Override
     public ShortBuffer put(short c) {
-//        if (position == limit) {
-//            throw new BufferOverflowException();
-//        }
         shortArray.setAt(position++, (double)c);
         return this;
     }
 
     @Override
     public short get(int index) {
-//        if (index < 0 || index >= limit) {
-//            throw new IndexOutOfBoundsException();
-//        }
         return shortArray.getAt(index).shortValue();
     }
 

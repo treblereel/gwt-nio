@@ -101,9 +101,6 @@ final class DirectReadWriteFloatBufferAdapter extends FloatBuffer implements Has
 
     @Override
     public float get() {
-        if (position == limit) {
-            throw new BufferUnderflowException();
-        }
         return floatArray.getAt(position++).floatValue();
     }
 

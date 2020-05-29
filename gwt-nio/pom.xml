@@ -54,7 +54,7 @@
     <maven.source.plugin>3.2.1</maven.source.plugin>
     <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
 
-    <jsinterop.annotations.version>1.0.2</jsinterop.annotations.version>
+    <jsinterop.annotations.version>2.0.0</jsinterop.annotations.version>
   </properties>
 
   <dependencies>
