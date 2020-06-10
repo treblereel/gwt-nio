@@ -8,6 +8,15 @@ Typed Arrays.
 To use in GWT2, depend on this Jar in your project, and add this to
 your `.gwt.xml` module file:
 
+    ```xml
+    <dependency>
+        <groupId>org.treblereel.gwt</groupId>
+        <artifactId>gwt-nio</artifactId>
+        <version>1.0</version>
+    </dependency>
+    ```
+
+
     <inherits name="org.gwtproject.nio.GwtNioSupport" />
 
 The `org.gwtproject.nio.TypedArrayHelper` class contains to helper 

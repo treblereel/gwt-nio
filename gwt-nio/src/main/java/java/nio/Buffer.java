@@ -40,7 +40,6 @@ package java.nio;
  * take advantage of native memory APIs and it may not stay in the Java heap,
  * thus it is not affected by garbage collection.</li>
  * </ul>
- * </p>
  * <p>
  * Buffers are not thread-safe. If concurrent access to a buffer instance is
  * required, then the callers are responsible to take care of the

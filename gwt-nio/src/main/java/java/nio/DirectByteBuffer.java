@@ -83,7 +83,7 @@ public abstract class DirectByteBuffer extends BaseByteBuffer implements HasArra
         position += len;
         return this;
     }
-    
+
     public final byte get() {
 //        if (position == limit) {
 //            throw new BufferUnderflowException();

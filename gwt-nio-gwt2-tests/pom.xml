@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.gwtproject.nio</groupId>
+        <groupId>org.treblereel.gwt.nio</groupId>
         <artifactId>gwt-nio-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <artifactId>gwt-nio-gwt2-tests</artifactId>
     <packaging>gwt-lib</packaging>
@@ -37,9 +37,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.gwtproject.nio</groupId>
+            <groupId>org.treblereel.gwt.nio</groupId>
             <artifactId>gwt-nio</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
@@ -80,7 +80,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <generateInheritsFromDependencies>false</generateInheritsFromDependencies>
-                    <moduleName>org.gwtproject.nio.client.NIOGwtTest</moduleName>
+                    <moduleName>org.treblereel.gwt.nio.client.NIOGwtTest</moduleName>
                     <includes>**/*Suite.java</includes>
                 </configuration>
             </plugin>

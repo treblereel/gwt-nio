@@ -755,6 +755,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * 
      * @see #array()
      * @since Android 1.0
+     * @return byte array
      */
     abstract byte[] protectedArray();
 
@@ -763,6 +764,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * 
      * @see #arrayOffset()
      * @since Android 1.0
+     * @return int value
      */
     abstract int protectedArrayOffset();
 
@@ -771,6 +773,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * 
      * @see #hasArray()
      * @since Android 1.0
+     * @return boolean value
      */
     abstract boolean protectedHasArray();
 

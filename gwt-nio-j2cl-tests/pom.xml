@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.gwtproject.nio</groupId>
+    <groupId>org.treblereel.gwt.nio</groupId>
     <artifactId>gwt-nio-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
   <artifactId>gwt-nio-j2cl-tests</artifactId>
 
@@ -34,12 +34,6 @@
     </developer>
   </developers>
 
-  <scm>
-    <connection>scm:git:git://github.com/gwtproject/gwt-nio.git</connection>
-    <developerConnection>scm:git:ssh://github.com/gwtproject/gwt-nio.git</developerConnection>
-    <url>https://github.com/gwtproject/gwt-nio/tree/master</url>
-  </scm>
-
   <inceptionYear>2020</inceptionYear>
 
   <properties>
@@ -66,9 +60,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.gwtproject.nio</groupId>
+      <groupId>org.treblereel.gwt.nio</groupId>
       <artifactId>gwt-nio</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0</version>
     </dependency>
     <!-- test dependencies -->
     <dependency>
@@ -102,6 +96,15 @@
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>com.vertispan.j2cl</groupId>
