@@ -7,7 +7,6 @@
 
   <inherits name='com.google.gwt.corp.compatibility.Numbers'/>
   <inherits name='java.nio.Nio'/>
-  <inherits name='org.apache.harmony.luni.platform.Endianness'/>
 
   <source path="" />
 </module>

@@ -19,8 +19,6 @@ package java.nio;
 
 import com.google.gwt.corp.compatibility.Numbers;
 
-import org.apache.harmony.luni.platform.Endianness;
-
 /**
  * HeapByteBuffer, ReadWriteHeapByteBuffer and ReadOnlyHeapByteBuffer compose
  * the implementation of array based byte buffers.

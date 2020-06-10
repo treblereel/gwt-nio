@@ -17,10 +17,6 @@
 
 package java.nio;
 
-import org.apache.harmony.luni.platform.Endianness;
-
-
-
 /**
  * A buffer for bytes.
  * <p>

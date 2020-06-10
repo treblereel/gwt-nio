@@ -21,7 +21,6 @@ import com.google.gwt.corp.compatibility.Numbers;
 import elemental2.core.ArrayBuffer;
 import elemental2.core.ArrayBufferView;
 import elemental2.core.Int8Array;
-import org.apache.harmony.luni.platform.Endianness;
 import org.gwtproject.nio.HasArrayBufferView;
 
 /**
