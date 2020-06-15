@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.treblereel.gwt.nio</groupId>
     <artifactId>gwt-nio-parent</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
   </parent>
   <artifactId>gwt-nio-j2cl-tests</artifactId>
 
@@ -62,7 +62,7 @@
     <dependency>
       <groupId>org.treblereel.gwt.nio</groupId>
       <artifactId>gwt-nio</artifactId>
-      <version>1.0</version>
+      <version>1.1-SNAPSHOT</version>
     </dependency>
     <!-- test dependencies -->
     <dependency>
