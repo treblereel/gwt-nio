@@ -4,7 +4,7 @@
 
   <groupId>org.treblereel.gwt.nio</groupId>
   <artifactId>gwt-nio</artifactId>
-  <version>1.0</version>
+  <version>0.9-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>GWT NIO</name>
@@ -41,7 +41,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <elemental2.version>1.0.0</elemental2.version>
+    <elemental2.version>1.0.0-RC1</elemental2.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -54,7 +54,7 @@
     <maven.source.plugin>3.2.1</maven.source.plugin>
     <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
 
-    <jsinterop.annotations.version>2.0.0</jsinterop.annotations.version>
+    <jsinterop.annotations.version>1.0.2</jsinterop.annotations.version>
   </properties>
 
   <dependencies>
