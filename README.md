@@ -10,7 +10,7 @@ your `.gwt.xml` module file:
 
     ```xml
     <dependency>
-        <groupId>org.treblereel.gwt</groupId>
+        <groupId>org.treblereel.gwt.nio</groupId>
         <artifactId>gwt-nio</artifactId>
         <version>1.1</version>
     </dependency>
