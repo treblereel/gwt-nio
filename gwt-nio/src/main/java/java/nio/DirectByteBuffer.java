@@ -33,7 +33,7 @@ import org.gwtproject.nio.HasArrayBufferView;
  * <p>
  * All methods are marked final for runtime performance.
  * </p>
- * 
+ *
  */
 public abstract class DirectByteBuffer extends BaseByteBuffer implements HasArrayBufferView {
 
@@ -46,7 +46,7 @@ public abstract class DirectByteBuffer extends BaseByteBuffer implements HasArra
     DirectByteBuffer(ArrayBuffer buf) {
     	this(buf, buf.byteLength, 0);
     }
-    
+
     DirectByteBuffer(ArrayBuffer buffer, int capacity, int offset) {
     	super(capacity);
     	byteArray = new Int8Array(buffer, offset, capacity);
@@ -55,31 +55,31 @@ public abstract class DirectByteBuffer extends BaseByteBuffer implements HasArra
 	public ArrayBufferView getTypedArray() {
 		return byteArray;
 	}
-	
+
 	public int getElementSize() {
 		return 1;
 	}
 
     /*
      * Override ByteBuffer.get(byte[], int, int) to improve performance.
-     * 
+     *
      * (non-Javadoc)
-     * 
+     *
      * @see java.nio.ByteBuffer#get(byte[], int, int)
      */
     public final ByteBuffer get(byte[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
             throw new BufferUnderflowException();
         }
-        
+
         for (int i = 0; i < len; i++) {
         	dest[i + off] = get(position + i);
         }
-        
+
         position += len;
         return this;
     }
@@ -175,7 +175,7 @@ public abstract class DirectByteBuffer extends BaseByteBuffer implements HasArra
             for (int i = 0; i < 4; i++) {
                 bytes = bytes << 8;
                 bytes = bytes | (byteArray.getAt(baseOffset + i).byteValue() & 0xFF);
-            }    
+            }
         }else{
             for (int i = 3; i >= 0; i--) {
                 bytes = bytes << 8;
@@ -191,7 +191,7 @@ public abstract class DirectByteBuffer extends BaseByteBuffer implements HasArra
             for (int i = 0; i < 8; i++) {
                 bytes = bytes << 8;
                 bytes = bytes | (byteArray.getAt(baseOffset + i).byteValue() & 0xFF);
-            }    
+            }
         }else{
             for (int i = 7; i >= 0; i--) {
                 bytes = bytes << 8;

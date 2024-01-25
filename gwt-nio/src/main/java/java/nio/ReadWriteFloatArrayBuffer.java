@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * This class is marked final for runtime performance.
  * </p>
- * 
+ *
  */
 final class ReadWriteFloatArrayBuffer extends FloatArrayBuffer {
 
@@ -105,7 +105,7 @@ final class ReadWriteFloatArrayBuffer extends FloatArrayBuffer {
 
     public FloatBuffer put(float[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -116,7 +116,7 @@ final class ReadWriteFloatArrayBuffer extends FloatArrayBuffer {
         position += len;
         return this;
     }
-    
+
     public FloatBuffer slice() {
         return new ReadWriteFloatArrayBuffer(remaining(), backingArray, offset
                 + position);

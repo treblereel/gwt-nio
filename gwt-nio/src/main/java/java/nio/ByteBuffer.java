@@ -35,10 +35,10 @@ package java.nio;
 public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer>,
                                                            StringToByteBuffer{
 
-  
+
     /**
      * Creates a byte buffer based on a newly allocated byte array.
-     * 
+     *
      * @param capacity
      *            the capacity of the new buffer
      * @return the created byte buffer.
@@ -55,7 +55,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Creates a direct byte buffer based on a newly allocated memory block.
-     * 
+     *
      * @param capacity
      *            the capacity of the new buffer
      * @return the created byte buffer.
@@ -76,7 +76,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * Calling this method has the same effect as
      * {@code wrap(array, 0, array.length)}.
      * </p>
-     * 
+     *
      * @param array
      *            the byte array which the new buffer will be based on
      * @return the created byte buffer.
@@ -92,7 +92,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The new buffer's position will be {@code start}, limit will be
      * {@code start + len}, capacity will be the length of the array.
      * </p>
-     * 
+     *
      * @param array
      *            the byte array which the new buffer will be based on.
      * @param start
@@ -126,7 +126,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Constructs a {@code ByteBuffer} with given capacity.
-     * 
+     *
      * @param capacity
      *            the capacity of the buffer.
      */
@@ -136,7 +136,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Returns the byte array which this buffer is based on, if there is one.
-     * 
+     *
      * @return the byte array which this buffer is based on.
      * @exception ReadOnlyBufferException
      *                if this buffer is based on a read-only array.
@@ -155,7 +155,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The offset is the index of the array which corresponds to the zero
      * position of the buffer.
      * </p>
-     * 
+     *
      * @return the offset of the byte array which this buffer is based on.
      * @exception ReadOnlyBufferException
      *                if this buffer is based on a read-only array.
@@ -182,7 +182,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a char buffer which is based on the content of this byte buffer.
      * @since Android 1.0
      */
@@ -202,7 +202,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a double buffer which is based on the content of this byte
      *         buffer.
      * @since Android 1.0
@@ -223,7 +223,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a float buffer which is based on the content of this byte buffer.
      * @since Android 1.0
      */
@@ -243,7 +243,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a int buffer which is based on the content of this byte buffer.
      * @since Android 1.0
      */
@@ -263,7 +263,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a long buffer which is based on the content of this byte buffer.
      * @since Android 1.0
      */
@@ -281,7 +281,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the new buffer. The two
      * buffer's position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a read-only version of this buffer.
      * @since Android 1.0
      */
@@ -301,7 +301,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a short buffer which is based on the content of this byte buffer.
      * @since Android 1.0
      */
@@ -315,7 +315,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * {@code remaining()}; the limit is set to capacity; the mark is
      * cleared.
      * </p>
-     * 
+     *
      * @return this buffer.
      * @exception ReadOnlyBufferException
      *                if no changes may be made to the contents of this buffer.
@@ -326,7 +326,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
     /**
      * Compares the remaining bytes of this buffer to another byte buffer's
      * remaining bytes.
-     * 
+     *
      * @param otherBuffer
      *            another byte buffer.
      * @return a negative value if this is less than {@code other}; 0 if this
@@ -367,7 +367,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a duplicated buffer that shares its content with this buffer.
      * @since Android 1.0
      */
@@ -380,7 +380,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * byte buffers are equal if and only if their remaining bytes are exactly
      * the same. Position, limit, capacity and mark are not considered.
      * </p>
-     * 
+     *
      * @param other
      *            the object to compare with this byte buffer.
      * @return {@code true} if this byte buffer is equal to {@code other},
@@ -409,7 +409,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Returns the byte at the current position and increases the position by 1.
-     * 
+     *
      * @return the byte at the current position.
      * @exception BufferUnderflowException
      *                if the position is equal or greater than limit.
@@ -424,7 +424,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * Calling this method has the same effect as
      * {@code get(dest, 0, dest.length)}.
      * </p>
-     * 
+     *
      * @param dest
      *            the destination byte array.
      * @return this buffer.
@@ -440,7 +440,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * Reads bytes from the current position into the specified byte array,
      * starting at the specified offset, and increases the position by the
      * number of bytes read.
-     * 
+     *
      * @param dest
      *            the target byte array.
      * @param off
@@ -458,7 +458,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      */
     public ByteBuffer get(byte[] dest, int off, int len) {
         int length = dest.length;
-        if ((off < 0 ) || (len < 0) || (off + len > length)) {
+        if ((off < 0 ) || (len < 0) || (len > length - off)) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -473,7 +473,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Returns the byte at the specified index and does not change the position.
-     * 
+     *
      * @param index
      *            the index, must not be negative and less than limit.
      * @return the byte at the specified index.
@@ -489,7 +489,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The 2 bytes starting at the current position are composed into a char
      * according to the current byte order and returned.
      * </p>
-     * 
+     *
      * @return the char at the current position.
      * @exception BufferUnderflowException
      *                if the position is greater than {@code limit - 2}.
@@ -504,7 +504,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * according to the current byte order and returned. The position is not
      * changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 2}.
@@ -520,9 +520,9 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * 8.
      * <p>
      * The 8 bytes starting from the current position are composed into a double
-     * according to the current byte order and returned. 
+     * according to the current byte order and returned.
      * </p>
-     * 
+     *
      * @return the double at the current position.
      * @exception BufferUnderflowException
      *                if the position is greater than {@code limit - 8}.
@@ -537,7 +537,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * according to the current byte order and returned. The position is not
      * changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 8}.
@@ -555,7 +555,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The 4 bytes starting at the current position are composed into a float
      * according to the current byte order and returned.
      * </p>
-     * 
+     *
      * @return the float at the current position.
      * @exception BufferUnderflowException
      *                if the position is greater than {@code limit - 4}.
@@ -570,7 +570,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * according to the current byte order and returned. The position is not
      * changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 4}.
@@ -587,7 +587,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The 4 bytes starting at the current position are composed into a int
      * according to the current byte order and returned.
      * </p>
-     * 
+     *
      * @return the int at the current position.
      * @exception BufferUnderflowException
      *                if the position is greater than {@code limit - 4}.
@@ -602,7 +602,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * according to the current byte order and returned. The position is not
      * changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 4}.
@@ -619,7 +619,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The 8 bytes starting at the current position are composed into a long
      * according to the current byte order and returned.
      * </p>
-     * 
+     *
      * @return the long at the current position.
      * @exception BufferUnderflowException
      *                if the position is greater than {@code limit - 8}.
@@ -651,7 +651,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The 2 bytes starting at the current position are composed into a short
      * according to the current byte order and returned.
      * </p>
-     * 
+     *
      * @return the short at the current position.
      * @exception BufferUnderflowException
      *                if the position is greater than {@code limit - 2}.
@@ -666,7 +666,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * according to the current byte order and returned. The position is not
      * changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 2}.
@@ -680,7 +680,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
     /**
      * Indicates whether this buffer is based on a byte array and provides
      * read/write access.
-     * 
+     *
      * @return {@code true} if this buffer is based on a byte array and provides
      *         read/write access, {@code false} otherwise.
      * @since Android 1.0
@@ -692,7 +692,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
     /**
      * Calculates this buffer's hash code from the remaining chars. The
      * position, limit, capacity and mark don't affect the hash code.
-     * 
+     *
      * @return the hash code calculated from the remaining bytes.
      * @since Android 1.0
      */
@@ -707,7 +707,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Indicates whether this buffer is direct.
-     * 
+     *
      * @return {@code true} if this buffer is direct, {@code false} otherwise.
      * @since Android 1.0
      */
@@ -720,7 +720,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The default byte order of byte buffer is always
      * {@link ByteOrder#BIG_ENDIAN BIG_ENDIAN}
      * </p>
-     * 
+     *
      * @return the byte order used by this buffer when converting bytes from/to
      *         other primitive types.
      * @since Android 1.0
@@ -732,7 +732,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Sets the byte order of this buffer.
-     * 
+     *
      * @param byteOrder
      *            the byte order to set. If {@code null} then the order
      *            will be {@link ByteOrder#LITTLE_ENDIAN LITTLE_ENDIAN}.
@@ -752,7 +752,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Child class implements this method to realize {@code array()}.
-     * 
+     *
      * @see #array()
      * @since Android 1.0
      * @return byte array
@@ -761,7 +761,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Child class implements this method to realize {@code arrayOffset()}.
-     * 
+     *
      * @see #arrayOffset()
      * @since Android 1.0
      * @return int value
@@ -770,7 +770,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Child class implements this method to realize {@code hasArray()}.
-     * 
+     *
      * @see #hasArray()
      * @since Android 1.0
      * @return boolean value
@@ -780,7 +780,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
     /**
      * Writes the given byte to the current position and increases the position
      * by 1.
-     * 
+     *
      * @param b
      *            the byte to write.
      * @return this buffer.
@@ -799,7 +799,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * Calling this method has the same effect as
      * {@code put(src, 0, src.length)}.
      * </p>
-     * 
+     *
      * @param src
      *            the source byte array.
      * @return this buffer.
@@ -817,7 +817,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * Writes bytes in the given byte array, starting from the specified offset,
      * to the current position and increases the position by the number of bytes
      * written.
-     * 
+     *
      * @param src
      *            the source byte array.
      * @param off
@@ -837,7 +837,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      */
     public ByteBuffer put(byte[] src, int off, int len) {
         int length = src.length;
-        if ((off < 0 ) || (len < 0) || (off + len > length)) {
+        if ((off < 0 ) || (len < 0) || (len > length - off)) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -854,7 +854,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * Writes all the remaining bytes of the {@code src} byte buffer to this
      * buffer's current position, and increases both buffers' position by the
      * number of bytes copied.
-     * 
+     *
      * @param src
      *            the source byte buffer.
      * @return this buffer.
@@ -883,7 +883,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
     /**
      * Write a byte to the specified index of this buffer without changing the
      * position.
-     * 
+     *
      * @param index
      *            the index, must not be negative and less than the limit.
      * @param b
@@ -903,7 +903,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * <p>
      * The char is converted to bytes using the current byte order.
      * </p>
-     * 
+     *
      * @param value
      *            the char to write.
      * @return this buffer.
@@ -921,7 +921,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The char is converted to bytes using the current byte order. The position
      * is not changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 2}.
@@ -942,7 +942,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * <p>
      * The double is converted to bytes using the current byte order.
      * </p>
-     * 
+     *
      * @param value
      *            the double to write.
      * @return this buffer.
@@ -960,7 +960,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The double is converted to bytes using the current byte order. The
      * position is not changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 8}.
@@ -981,7 +981,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * <p>
      * The float is converted to bytes using the current byte order.
      * </p>
-     * 
+     *
      * @param value
      *            the float to write.
      * @return this buffer.
@@ -999,7 +999,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The float is converted to bytes using the current byte order. The
      * position is not changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 4}.
@@ -1020,7 +1020,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * <p>
      * The int is converted to bytes using the current byte order.
      * </p>
-     * 
+     *
      * @param value
      *            the int to write.
      * @return this buffer.
@@ -1038,7 +1038,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The int is converted to bytes using the current byte order. The position
      * is not changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 4}.
@@ -1059,7 +1059,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * <p>
      * The long is converted to bytes using the current byte order.
      * </p>
-     * 
+     *
      * @param value
      *            the long to write.
      * @return this buffer.
@@ -1077,7 +1077,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The long is converted to bytes using the current byte order. The position
      * is not changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 8}.
@@ -1098,7 +1098,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * <p>
      * The short is converted to bytes using the current byte order.
      * </p>
-     * 
+     *
      * @param value
      *            the short to write.
      * @return this buffer.
@@ -1116,7 +1116,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * The short is converted to bytes using the current byte order. The
      * position is not changed.
      * </p>
-     * 
+     *
      * @param index
      *            the index, must not be negative and equal or less than
      *            {@code limit - 2}.
@@ -1145,7 +1145,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a sliced buffer that shares its content with this buffer.
      * @since Android 1.0
      */
@@ -1153,7 +1153,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
 
     /**
      * Returns a string representing the state of this byte buffer.
-     * 
+     *
      * @return a string representing the state of this byte buffer.
      * @since Android 1.0
      */
@@ -1168,7 +1168,7 @@ public abstract class ByteBuffer extends Buffer implements Comparable<ByteBuffer
         buf.append(limit());
         return buf.toString();
     }
-    
+
     public ByteBuffer stringToByteBuffer(String s) {
     	return new java.nio.StringByteBuffer(s);
     }

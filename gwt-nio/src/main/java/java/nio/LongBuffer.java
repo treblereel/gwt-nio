@@ -30,14 +30,14 @@ package java.nio;
  * <li>Use {@link java.nio.ByteBuffer#asLongBuffer() ByteBuffer.asLongBuffer}
  * to create a long buffer based on a byte buffer.</li>
  * </ul>
- * 
+ *
  * @since Android 1.0
  */
 public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer> {
 
     /**
      * Creates a long buffer based on a newly allocated long array.
-     * 
+     *
      * @param capacity
      *            the capacity of the new buffer.
      * @return the created long buffer.
@@ -58,7 +58,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * Calling this method has the same effect as
      * {@code wrap(array, 0, array.length)}.
      * </p>
-     * 
+     *
      * @param array
      *            the long array which the new buffer will be based on.
      * @return the created long buffer.
@@ -74,7 +74,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * The new buffer's position will be {@code start}, limit will be
      * {@code start + len}, capacity will be the length of the array.
      * </p>
-     * 
+     *
      * @param array
      *            the long array which the new buffer will be based on.
      * @param start
@@ -115,7 +115,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
 
     /**
      * Returns the long array which this buffer is based on, if there is one.
-     * 
+     *
      * @return the long array which this buffer is based on.
      * @exception ReadOnlyBufferException
      *                if this buffer is based on an array, but it is read-only.
@@ -134,7 +134,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * The offset is the index of the array and corresponds to the zero position
      * of the buffer.
      * </p>
-     * 
+     *
      * @return the offset of the long array which this buffer is based on.
      * @exception ReadOnlyBufferException
      *                if this buffer is based on an array, but it is read-only.
@@ -158,7 +158,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * buffer's change of content will be visible to the new buffer. The two
      * buffer's position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a read-only version of this buffer.
      * @since Android 1.0
      */
@@ -171,7 +171,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * position zero. Then the position is set to {@code remaining()}; the
      * limit is set to capacity; the mark is cleared.
      * </p>
-     * 
+     *
      * @return this buffer.
      * @exception ReadOnlyBufferException
      *                if no changes may be made to the contents of this buffer.
@@ -182,7 +182,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
     /**
      * Compare the remaining longs of this buffer to another long buffer's
      * remaining longs.
-     * 
+     *
      * @param otherBuffer
      *            another long buffer.
      * @return a negative value if this is less than {@code otherBuffer}; 0 if
@@ -225,7 +225,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a duplicated buffer that shares its content with this buffer.
      * @since Android 1.0
      */
@@ -238,7 +238,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * long buffers are equal if and only if their remaining longs are exactly
      * the same. Position, limit, capacity and mark are not considered.
      * </p>
-     * 
+     *
      * @param other
      *            the object to compare with this long buffer.
      * @return {@code true} if this long buffer is equal to {@code other},
@@ -267,7 +267,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
 
     /**
      * Returns the long at the current position and increase the position by 1.
-     * 
+     *
      * @return the long at the current position.
      * @exception BufferUnderflowException
      *                if the position is equal or greater than limit.
@@ -282,7 +282,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * Calling this method has the same effect as
      * {@code get(dest, 0, dest.length)}.
      * </p>
-     * 
+     *
      * @param dest
      *            the destination long array.
      * @return this buffer.
@@ -298,7 +298,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * Reads longs from the current position into the specified long array,
      * starting from the specified offset, and increase the position by the
      * number of longs read.
-     * 
+     *
      * @param dest
      *            the target long array.
      * @param off
@@ -316,10 +316,10 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      */
     public LongBuffer get(long[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || len + off > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         if (len > remaining()) {
             throw new BufferUnderflowException();
         }
@@ -331,7 +331,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
 
     /**
      * Returns the long at the specified index; the position is not changed.
-     * 
+     *
      * @param index
      *            the index, must not be negative and less than limit.
      * @return the long at the specified index.
@@ -343,7 +343,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
 
     /**
      * Indicates whether this buffer is based on a long array and is read/write.
-     * 
+     *
      * @return {@code true} if this buffer is based on a long array and provides
      *         read/write access, {@code false} otherwise.
      * @since Android 1.0
@@ -355,7 +355,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
     /**
      * Calculates this buffer's hash code from the remaining chars. The
      * position, limit, capacity and mark don't affect the hash code.
-     * 
+     *
      * @return the hash code calculated from the remaining longs.
      * @since Android 1.0
      */
@@ -378,7 +378,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * A long buffer is direct if it is based on a byte buffer and the byte
      * buffer is direct.
      * </p>
-     * 
+     *
      * @return {@code true} if this buffer is direct, {@code false} otherwise.
      * @since Android 1.0
      */
@@ -391,7 +391,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * If this buffer is not based on a byte buffer, then always return the
      * platform's native byte order.
      * </p>
-     * 
+     *
      * @return the byte order used by this buffer when converting longs from/to
      *         bytes.
      * @since Android 1.0
@@ -422,7 +422,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
     /**
      * Writes the given long to the current position and increases the position
      * by 1.
-     * 
+     *
      * @param l
      *            the long to write.
      * @return this buffer.
@@ -441,7 +441,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * Calling this method has the same effect as
      * {@code put(src, 0, src.length)}.
      * </p>
-     * 
+     *
      * @param src
      *            the source long array.
      * @return this buffer.
@@ -459,7 +459,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * Writes longs from the given long array, starting from the specified
      * offset, to the current position and increases the position by the number
      * of longs written.
-     * 
+     *
      * @param src
      *            the source long array.
      * @param off
@@ -479,10 +479,10 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      */
     public LongBuffer put(long[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || len + off > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         if (len > remaining()) {
             throw new BufferOverflowException();
         }
@@ -496,7 +496,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * Writes all the remaining longs of the {@code src} long buffer to this
      * buffer's current position, and increases both buffers' position by the
      * number of longs copied.
-     * 
+     *
      * @param src
      *            the source long buffer.
      * @return this buffer.
@@ -525,7 +525,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
     /**
      * Writes a long to the specified index of this buffer; the position is not
      * changed.
-     * 
+     *
      * @param index
      *            the index, must not be negative and less than the limit.
      * @param l
@@ -553,7 +553,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a sliced buffer that shares its content with this buffer.
      * @since Android 1.0
      */
@@ -561,7 +561,7 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
 
     /**
      * Returns a string representing the state of this long buffer.
-     * 
+     *
      * @return a string representing the state of this long buffer.
      * @since Android 1.0
      */

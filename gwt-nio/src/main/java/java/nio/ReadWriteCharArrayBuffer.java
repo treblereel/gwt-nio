@@ -26,7 +26,7 @@ package java.nio;
  * <p>
  * This class is marked final for runtime performance.
  * </p>
- * 
+ *
  */
 final class ReadWriteCharArrayBuffer extends CharArrayBuffer {
 
@@ -102,7 +102,7 @@ final class ReadWriteCharArrayBuffer extends CharArrayBuffer {
 
     public CharBuffer put(char[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || len + off > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -112,7 +112,7 @@ final class ReadWriteCharArrayBuffer extends CharArrayBuffer {
         position += len;
         return this;
     }
-    
+
     public CharBuffer slice() {
         return new ReadWriteCharArrayBuffer(remaining(), backingArray, offset
                 + position);

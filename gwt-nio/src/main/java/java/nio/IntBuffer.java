@@ -29,14 +29,14 @@ package java.nio;
  * <li>Use {@link java.nio.ByteBuffer#asIntBuffer() ByteBuffer.asIntBuffer} to
  * create a int buffer based on a byte buffer.</li>
  * </ul>
- * 
+ *
  * @since Android 1.0
  */
 public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> {
 
     /**
      * Creates an int buffer based on a newly allocated int array.
-     * 
+     *
      * @param capacity
      *            the capacity of the new buffer.
      * @return the created int buffer.
@@ -57,7 +57,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * Calling this method has the same effect as
      * {@code wrap(array, 0, array.length)}.
      * </p>
-     * 
+     *
      * @param array
      *            the int array which the new buffer will be based on.
      * @return the created int buffer.
@@ -73,7 +73,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * The new buffer's position will be {@code start}, limit will be
      * {@code start + len}, capacity will be the length of the array.
      * </p>
-     * 
+     *
      * @param array
      *            the int array which the new buffer will be based on.
      * @param start
@@ -114,7 +114,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
 
     /**
      * Returns the int array which this buffer is based on, if there is one.
-     * 
+     *
      * @return the int array which this buffer is based on.
      * @exception ReadOnlyBufferException
      *                if this buffer is based on an array, but it is read-only.
@@ -133,7 +133,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * The offset is the index of the array corresponds to the zero position of
      * the buffer.
      * </p>
-     * 
+     *
      * @return the offset of the int array which this buffer is based on.
      * @exception ReadOnlyBufferException
      *                if this buffer is based on an array, but it is read-only.
@@ -157,7 +157,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * buffer's change of content will be visible to the new buffer. The two
      * buffer's position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a read-only version of this buffer.
      * @since Android 1.0
      */
@@ -170,7 +170,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * position zero. Then the position is set to {@code remaining()}; the
      * limit is set to capacity; the mark is cleared.
      * </p>
-     * 
+     *
      * @return this buffer.
      * @exception ReadOnlyBufferException
      *                if no changes may be made to the contents of this buffer.
@@ -181,7 +181,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
     /**
      * Compares the remaining ints of this buffer to another int buffer's
      * remaining ints.
-     * 
+     *
      * @param otherBuffer
      *            another int buffer.
      * @return a negative value if this is less than {@code other}; 0 if this
@@ -224,7 +224,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a duplicated buffer that shares its content with this buffer.
      * @since Android 1.0
      */
@@ -237,7 +237,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * int buffers are equal if and only if their remaining ints are exactly the
      * same. Position, limit, capacity and mark are not considered.
      * </p>
-     * 
+     *
      * @param other
      *            the object to compare with this int buffer.
      * @return {@code true} if this int buffer is equal to {@code other},
@@ -266,7 +266,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
 
     /**
      * Returns the int at the current position and increases the position by 1.
-     * 
+     *
      * @return the int at the current position.
      * @exception BufferUnderflowException
      *                if the position is equal or greater than limit.
@@ -281,7 +281,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * Calling this method has the same effect as
      * {@code get(dest, 0, dest.length)}.
      * </p>
-     * 
+     *
      * @param dest
      *            the destination int array.
      * @return this buffer.
@@ -297,7 +297,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * Reads ints from the current position into the specified int array,
      * starting from the specified offset, and increases the position by the
      * number of ints read.
-     * 
+     *
      * @param dest
      *            the target int array.
      * @param off
@@ -315,7 +315,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      */
     public IntBuffer get(int[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || len + off > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -329,7 +329,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
 
     /**
      * Returns an int at the specified index; the position is not changed.
-     * 
+     *
      * @param index
      *            the index, must not be negative and less than limit.
      * @return an int at the specified index.
@@ -341,7 +341,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
 
     /**
      * Indicates whether this buffer is based on a int array and is read/write.
-     * 
+     *
      * @return {@code true} if this buffer is based on a int array and provides
      *         read/write access, {@code false} otherwise.
      * @since Android 1.0
@@ -353,7 +353,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
     /**
      * Calculates this buffer's hash code from the remaining chars. The
      * position, limit, capacity and mark don't affect the hash code.
-     * 
+     *
      * @return the hash code calculated from the remaining ints.
      * @since Android 1.0
      */
@@ -374,10 +374,10 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * An int buffer is direct if it is based on a byte buffer and the byte
      * buffer is direct.
      * </p>
-     * 
+     *
      * @return {@code true} if this buffer is direct, {@code false} otherwise.
      * @since Android 1.0
-     */    
+     */
     public abstract boolean isDirect();
 
     /**
@@ -387,7 +387,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * If this buffer is not based on a byte buffer, then always return the
      * platform's native byte order.
      * </p>
-     * 
+     *
      * @return the byte order used by this buffer when converting ints from/to
      *         bytes.
      * @since Android 1.0
@@ -418,7 +418,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
     /**
      * Writes the given int to the current position and increases the position
      * by 1.
-     * 
+     *
      * @param i
      *            the int to write.
      * @return this buffer.
@@ -437,7 +437,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * Calling this method has the same effect as
      * {@code put(src, 0, src.length)}.
      * </p>
-     * 
+     *
      * @param src
      *            the source int array.
      * @return this buffer.
@@ -455,7 +455,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * Writes ints from the given int array, starting from the specified offset,
      * to the current position and increases the position by the number of ints
      * written.
-     * 
+     *
      * @param src
      *            the source int array.
      * @param off
@@ -475,10 +475,10 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      */
     public IntBuffer put(int[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || len + off > length) {
+        if (off < 0 || len < 0 || ((long) off + (long) len) > length) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         if (len > remaining()) {
             throw new BufferOverflowException();
         }
@@ -492,7 +492,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * Writes all the remaining ints of the {@code src} int buffer to this
      * buffer's current position, and increases both buffers' position by the
      * number of ints copied.
-     * 
+     *
      * @param src
      *            the source int buffer.
      * @return this buffer.
@@ -521,7 +521,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
     /**
      * Write a int to the specified index of this buffer; the position is not
      * changed.
-     * 
+     *
      * @param index
      *            the index, must not be negative and less than the limit.
      * @param i
@@ -549,7 +549,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
      * buffer's change of content will be visible to the other. The two buffer's
      * position, limit and mark are independent.
      * </p>
-     * 
+     *
      * @return a sliced buffer that shares its content with this buffer.
      * @since Android 1.0
      */
@@ -557,7 +557,7 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
 
     /**
      * Returns a string represents of the state of this int buffer.
-     * 
+     *
      * @return a string represents of the state of this int buffer.
      * @since Android 1.0
      */

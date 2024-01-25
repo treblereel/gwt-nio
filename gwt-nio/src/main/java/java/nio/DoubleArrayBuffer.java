@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package java.nio; 
+package java.nio;
 
 /**
  * DoubleArrayBuffer, ReadWriteDoubleArrayBuffer and ReadOnlyDoubleArrayBuffer
@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * All methods are marked final for runtime performance.
  * </p>
- * 
+ *
  */
 abstract class DoubleArrayBuffer extends DoubleBuffer {
 
@@ -65,7 +65,7 @@ abstract class DoubleArrayBuffer extends DoubleBuffer {
 
     public final DoubleBuffer get(double[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -76,7 +76,7 @@ abstract class DoubleArrayBuffer extends DoubleBuffer {
         position += len;
         return this;
     }
-    
+
     public final boolean isDirect() {
         return false;
     }

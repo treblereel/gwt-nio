@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * This class is marked final for runtime performance.
  * </p>
- * 
+ *
  */
 final class ReadWriteShortArrayBuffer extends ShortArrayBuffer {
 
@@ -105,7 +105,7 @@ final class ReadWriteShortArrayBuffer extends ShortArrayBuffer {
 
     public ShortBuffer put(short[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -115,7 +115,7 @@ final class ReadWriteShortArrayBuffer extends ShortArrayBuffer {
         position += len;
         return this;
     }
-    
+
     public ShortBuffer slice() {
         return new ReadWriteShortArrayBuffer(remaining(), backingArray, offset
                 + position);

@@ -26,7 +26,7 @@ package java.nio;
  * <p>
  * This class is marked final for runtime performance.
  * </p>
- * 
+ *
  */
 final class ReadWriteIntArrayBuffer extends IntArrayBuffer {
 
@@ -102,7 +102,7 @@ final class ReadWriteIntArrayBuffer extends IntArrayBuffer {
 
     public IntBuffer put(int[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || (len > length - off)) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -113,7 +113,7 @@ final class ReadWriteIntArrayBuffer extends IntArrayBuffer {
         position += len;
         return this;
     }
-    
+
     public IntBuffer slice() {
         return new ReadWriteIntArrayBuffer(remaining(), backingArray, offset
                 + position);

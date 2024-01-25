@@ -25,7 +25,7 @@ package java.nio;
  * <li>Char sequence based buffer is always readonly.</li>
  * </ul>
  * </p>
- * 
+ *
  */
 final class CharSequenceAdapter extends CharBuffer {
 
@@ -72,7 +72,7 @@ final class CharSequenceAdapter extends CharBuffer {
 
     public final CharBuffer get(char[] dest, int off, int len) {
         int length = dest.length;
-        if ((off < 0 ) || (len < 0) || off + len > length) {
+        if ((off < 0 ) || (len < 0) || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -120,11 +120,11 @@ final class CharSequenceAdapter extends CharBuffer {
         if ((off < 0 ) || (len < 0) || off + len > src.length) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         if (len > remaining()) {
             throw new BufferOverflowException();
         }
-        
+
         throw new ReadOnlyBufferException();
     }
 
@@ -133,7 +133,7 @@ final class CharSequenceAdapter extends CharBuffer {
             throw new IndexOutOfBoundsException();
         }
         throw new ReadOnlyBufferException();
-    }  
+    }
 
     public CharBuffer slice() {
         return new CharSequenceAdapter(sequence.subSequence(position, limit));
@@ -143,7 +143,7 @@ final class CharSequenceAdapter extends CharBuffer {
         if (end < start || start < 0 || end > remaining()) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         CharSequenceAdapter result = copy(this);
         result.position = position + start;
         result.limit = position + end;

@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * All methods are marked final for runtime performance.
  * </p>
- * 
+ *
  */
 abstract class CharArrayBuffer extends CharBuffer {
 
@@ -65,7 +65,7 @@ abstract class CharArrayBuffer extends CharBuffer {
 
     public final CharBuffer get(char[] dest, int off, int len) {
         int length = dest.length;
-        if ((off < 0 ) || (len < 0) || off + len > length) {
+        if ((off < 0 ) || (len < 0) || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -75,7 +75,7 @@ abstract class CharArrayBuffer extends CharBuffer {
         position += len;
         return this;
     }
-    
+
     public final boolean isDirect() {
         return false;
     }
@@ -88,7 +88,7 @@ abstract class CharArrayBuffer extends CharBuffer {
         if (start < 0 || end < start || end > remaining()) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         CharBuffer result = duplicate();
         result.limit(position + end);
         result.position(position + start);

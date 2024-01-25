@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * This class is marked final for runtime performance.
  * </p>
- * 
+ *
  */
 final class ReadWriteDoubleArrayBuffer extends DoubleArrayBuffer {
 
@@ -105,7 +105,7 @@ final class ReadWriteDoubleArrayBuffer extends DoubleArrayBuffer {
 
     public DoubleBuffer put(double[] src, int off, int len) {
         int length = src.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -116,7 +116,7 @@ final class ReadWriteDoubleArrayBuffer extends DoubleArrayBuffer {
         position += len;
         return this;
     }
-    
+
     public DoubleBuffer slice() {
         return new ReadWriteDoubleArrayBuffer(remaining(), backingArray, offset
                 + position);
