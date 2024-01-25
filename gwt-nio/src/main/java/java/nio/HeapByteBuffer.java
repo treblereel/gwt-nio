@@ -29,7 +29,7 @@ import com.google.gwt.corp.compatibility.Numbers;
  * <p>
  * All methods are marked final for runtime performance.
  * </p>
- * 
+ *
  */
 abstract class HeapByteBuffer extends BaseByteBuffer {
 
@@ -57,14 +57,14 @@ abstract class HeapByteBuffer extends BaseByteBuffer {
 
     /*
      * Override ByteBuffer.get(byte[], int, int) to improve performance.
-     * 
+     *
      * (non-Javadoc)
-     * 
+     *
      * @see java.nio.ByteBuffer#get(byte[], int, int)
      */
     public final ByteBuffer get(byte[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -74,7 +74,7 @@ abstract class HeapByteBuffer extends BaseByteBuffer {
         position += len;
         return this;
     }
-    
+
     public final byte get() {
         if (position == limit) {
             throw new BufferUnderflowException();
@@ -167,7 +167,7 @@ abstract class HeapByteBuffer extends BaseByteBuffer {
             for (int i = 0; i < 4; i++) {
                 bytes = bytes << 8;
                 bytes = bytes | (backingArray[baseOffset + i] & 0xFF);
-            }    
+            }
         }else{
             for (int i = 3; i >= 0; i--) {
                 bytes = bytes << 8;
@@ -184,7 +184,7 @@ abstract class HeapByteBuffer extends BaseByteBuffer {
             for (int i = 0; i < 8; i++) {
                 bytes = bytes << 8;
                 bytes = bytes | (backingArray[baseOffset + i] & 0xFF);
-            }    
+            }
         }else{
             for (int i = 7; i >= 0; i--) {
                 bytes = bytes << 8;
@@ -199,7 +199,7 @@ abstract class HeapByteBuffer extends BaseByteBuffer {
         short bytes  = 0;
         if(order == Endianness.BIG_ENDIAN){
             bytes = (short) (backingArray[baseOffset] << 8);
-            bytes |= (backingArray[baseOffset + 1] & 0xFF);   
+            bytes |= (backingArray[baseOffset + 1] & 0xFF);
         }else{
             bytes = (short) (backingArray[baseOffset+1] << 8);
             bytes |= (backingArray[baseOffset] & 0xFF);

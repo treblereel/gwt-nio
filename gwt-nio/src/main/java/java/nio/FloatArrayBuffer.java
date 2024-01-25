@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * All methods are marked final for runtime performance.
  * </p>
- * 
+ *
  */
 abstract class FloatArrayBuffer extends FloatBuffer {
 
@@ -65,7 +65,7 @@ abstract class FloatArrayBuffer extends FloatBuffer {
 
     public final FloatBuffer get(float[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || off + len > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
         }
         if (len > remaining()) {
@@ -75,7 +75,7 @@ abstract class FloatArrayBuffer extends FloatBuffer {
         position += len;
         return this;
     }
-    
+
     public final boolean isDirect() {
         return false;
     }

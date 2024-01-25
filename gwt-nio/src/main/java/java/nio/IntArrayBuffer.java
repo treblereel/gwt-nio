@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package java.nio; 
+package java.nio;
 
 /**
  * IntArrayBuffer, ReadWriteIntArrayBuffer and ReadOnlyIntArrayBuffer compose
@@ -27,7 +27,7 @@ package java.nio;
  * <p>
  * All methods are marked final for runtime performance.
  * </p>
- * 
+ *
  */
 abstract class IntArrayBuffer extends IntBuffer {
 
@@ -65,9 +65,9 @@ abstract class IntArrayBuffer extends IntBuffer {
 
     public final IntBuffer get(int[] dest, int off, int len) {
         int length = dest.length;
-        if (off < 0 || len < 0 || len + off > length) {
+        if (off < 0 || len < 0 || len > length - off) {
             throw new IndexOutOfBoundsException();
-        }       
+        }
         if (len > remaining()) {
             throw new BufferUnderflowException();
         }
@@ -75,7 +75,7 @@ abstract class IntArrayBuffer extends IntBuffer {
         position += len;
         return this;
     }
-    
+
     public final boolean isDirect() {
         return false;
     }
