@@ -1,3 +1,6 @@
+[![GitHub license](https://img.shields.io/github/license/treblereel/gwt-nio)](https://github.com/treblereel/gwt-nio/blob/main/LICENSE)
+![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/org.treblereel.gwt.nio/gwt-nio?server=https%3A%2F%2Foss.sonatype.org&style=plastic)
+
 # GWT/J2CL emulation for `java.nio` packages
 
 This project provides emulation for the `java.nio` packages, forked
@@ -12,7 +15,7 @@ your `.gwt.xml` module file:
     <dependency>
         <groupId>org.treblereel.gwt.nio</groupId>
         <artifactId>gwt-nio</artifactId>
-        <version>1.1</version>
+        <version>LATEST_VERSION</version>
     </dependency>
     ```
 
