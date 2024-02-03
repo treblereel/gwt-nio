@@ -18,17 +18,25 @@ package org.gwtproject.nio;
 import elemental2.core.ArrayBuffer;
 import elemental2.core.ArrayBufferView;
 import java.nio.ByteBuffer;
-import java.nio.DirectReadWriteByteBuffer;
 import jsinterop.annotations.JsMethod;
+import jsinterop.base.Js;
 
 /** Allows us to wrap an existing typed array buffer in a ByteBuffer. */
 public class TypedArrayHelper {
 
   public static ByteBuffer wrap(ArrayBuffer ab) {
-    return new DirectReadWriteByteBuffer(ab);
+    ArrayBuffer casted = _wrap(ab);
+    return Js.uncheckedCast(casted);
   }
 
   @JsMethod
+  @SuppressWarnings({"unusable-by-js", "checkTypes"})
+  private static native ArrayBuffer _wrap(ArrayBuffer ab) /*-{
+        return @java.nio.DirectReadWriteByteBuffer::new(Ljava/lang/Object;)(ab);
+    }-*/;
+
+  @JsMethod
+  @SuppressWarnings("unusable-by-js")
   public static native ArrayBufferView unwrap(ByteBuffer bb) /*-{
         var casted = @elemental2.core.Js::uncheckedCast(Ljava/lang/Object;)(bb);
         return casted.getTypedArray();
@@ -37,6 +45,7 @@ public class TypedArrayHelper {
   private static ByteBuffer buffer = ByteBuffer.allocate(1);
 
   @JsMethod
+  @SuppressWarnings("unusable-by-js")
   public static native ByteBuffer stringToByteBuffer(String s) /*-{
         var buffer = @org.gwtproject.nio.TypedArrayHelper::buffer;
         return buffer.stringToByteBuffer(s);

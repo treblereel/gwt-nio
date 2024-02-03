@@ -1,5 +1,14 @@
 let DirectByteBuffer = goog.forwardDeclare('java.nio.DirectByteBuffer$impl');
-let Js = goog.forwardDeclare('jsinterop.base.Js$impl');
+let DirectReadWriteByteBuffer = goog.forwardDeclare('java.nio.DirectReadWriteByteBuffer$impl');
+
+/**
+ * @nodts @return {ArrayBuffer}
+ * @suppress {checkTypes}
+ */
+TypedArrayHelper._wrap = function(/** ArrayBuffer */ ab) {
+    TypedArrayHelper.$clinit();
+    return DirectReadWriteByteBuffer.$create__elemental2_core_ArrayBuffer(ab);
+}
 
 /** @nodts @return {ArrayBufferView} */
 TypedArrayHelper.unwrap = function(/** ByteBuffer */ bb) {
