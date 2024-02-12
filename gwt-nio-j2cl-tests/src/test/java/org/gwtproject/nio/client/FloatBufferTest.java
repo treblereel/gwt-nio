@@ -26,7 +26,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
-import elemental2.dom.DomGlobal;
 import java.nio.BufferOverflowException;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteOrder;
@@ -246,9 +245,6 @@ public class FloatBufferTest extends AbstractBufferTest {
 
     // duplicate's contents should be the same as buf
     FloatBuffer duplicate = buf.duplicate();
-
-    DomGlobal.console.log("1 " + buf.getClass().getCanonicalName());
-    DomGlobal.console.log("2 " + duplicate.getClass().getCanonicalName());
 
     assertNotSame(buf, duplicate);
     assertEquals(buf.position(), duplicate.position());
@@ -769,8 +765,6 @@ public class FloatBufferTest extends AbstractBufferTest {
   void assertContentEquals(FloatBuffer buf, FloatBuffer other) {
     assertEquals(buf.capacity(), other.capacity());
     for (int i = 0; i < buf.capacity(); i++) {
-      DomGlobal.console.log("va1 " + buf.get(i));
-      DomGlobal.console.log("va2 " + other.get(i));
       assertEquals(buf.get(i), other.get(i), 0.01);
     }
   }
