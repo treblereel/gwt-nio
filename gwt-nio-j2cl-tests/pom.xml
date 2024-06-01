@@ -51,7 +51,7 @@
     <maven.licence.plugin>3.0</maven.licence.plugin>
     <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
 
-    <j2cl.version>0.11.0-9336533b6</j2cl.version>
+    <j2cl.version>v20230718-1</j2cl.version>
   </properties>
 
   <dependencies>
