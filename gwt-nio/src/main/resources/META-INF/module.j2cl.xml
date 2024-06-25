@@ -1,0 +1,3 @@
+<module>
+    <super-source path="org/gwtproject/nio/emul/java/nio/"/>
+</module>
