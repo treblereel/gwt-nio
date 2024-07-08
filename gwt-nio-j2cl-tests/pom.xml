@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.treblereel.gwt.nio</groupId>
     <artifactId>gwt-nio-parent</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.3</version>
   </parent>
   <artifactId>gwt-nio-j2cl-tests</artifactId>
 
@@ -58,7 +58,7 @@
     <dependency>
       <groupId>org.treblereel.gwt.nio</groupId>
       <artifactId>gwt-nio</artifactId>
-      <version>1.3-SNAPSHOT</version>
+      <version>1.3</version>
     </dependency>
     <dependency>
       <groupId>org.kie.j2cl.tools</groupId>
