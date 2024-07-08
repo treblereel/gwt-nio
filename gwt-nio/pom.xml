@@ -4,7 +4,7 @@
 
   <groupId>org.treblereel.gwt.nio</groupId>
   <artifactId>gwt-nio</artifactId>
-  <version>1.3-SNAPSHOT</version>
+  <version>1.3</version>
   <packaging>jar</packaging>
 
   <name>GWT NIO</name>
@@ -42,10 +42,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <elemental2.version>1.1.0</elemental2.version>
+    <elemental2.version>1.2.1</elemental2.version>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
     <maven.source.version>3.0.1</maven.source.version>
     <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
@@ -126,6 +126,13 @@
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
+          <compilerArgument>-proc:none</compilerArgument>
+          <excludes>
+<!--
+            <exclude>**/src/main/java/org/gwtproject/nio/emul/java/nio/**</exclude>
+-->
+            <exclude>**/java/nio/**</exclude>
+          </excludes>
         </configuration>
       </plugin>
       <plugin>
@@ -150,16 +157,6 @@
     </plugins>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven.compiler.version}</version>
-          <configuration>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
-            <compilerArgument>-proc:none</compilerArgument>
-          </configuration>
-        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
