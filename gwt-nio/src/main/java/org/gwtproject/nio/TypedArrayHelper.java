@@ -32,13 +32,13 @@ public class TypedArrayHelper {
   @JsMethod
   @SuppressWarnings({"unusable-by-js", "checkTypes"})
   private static native ArrayBuffer _wrap(ArrayBuffer ab) /*-{
-        return @java.nio.DirectReadWriteByteBuffer::new(Ljava/lang/Object;)(ab);
+        return @java.nio.DirectReadWriteByteBuffer::new(Lelemental2/core/ArrayBuffer;)(ab);
     }-*/;
 
   @JsMethod
   @SuppressWarnings("unusable-by-js")
   public static native ArrayBufferView unwrap(ByteBuffer bb) /*-{
-        var casted = @elemental2.core.Js::uncheckedCast(Ljava/lang/Object;)(bb);
+        var casted = @jsinterop.base.Js::uncheckedCast(Ljava/lang/Object;)(bb);
         return casted.getTypedArray();
     }-*/;
 
