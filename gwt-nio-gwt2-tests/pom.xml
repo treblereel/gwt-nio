@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.treblereel.gwt.nio</groupId>
         <artifactId>gwt-nio-parent</artifactId>
-        <version>1.4</version>
+        <version>1.5</version>
     </parent>
     <artifactId>gwt-nio-gwt2-tests</artifactId>
     <packaging>gwt-lib</packaging>
@@ -30,8 +30,7 @@
         <vertispan.j2cl.repo.url>https://repo.vertispan.com/j2cl/</vertispan.j2cl.repo.url>
         <google.snapshot.repo.url>https://oss.sonatype.org/content/repositories/google-snapshots/</google.snapshot.repo.url>
 
-        <elemental2.version>1.2.3</elemental2.version>
-        <gwt.version>2.12.0</gwt.version>
+        <gwt.version>2.12.2</gwt.version>
         <junit.version>4.13.1</junit.version>
     </properties>
 
@@ -39,7 +38,7 @@
         <dependency>
             <groupId>org.treblereel.gwt.nio</groupId>
             <artifactId>gwt-nio</artifactId>
-            <version>1.4</version>
+            <version>1.5</version>
         </dependency>
         <dependency>
             <groupId>org.gwtproject</groupId>
