@@ -1,238 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.treblereel.gwt.nio</groupId>
-  <artifactId>gwt-nio</artifactId>
-  <version>1.5</version>
-  <packaging>jar</packaging>
+    <groupId>org.treblereel.gwt.nio</groupId>
+    <artifactId>gwt-nio</artifactId>
+    <version>1.5</version>
+    <packaging>jar</packaging>
 
-  <name>GWT NIO</name>
-  <description>GWT NIO</description>
-  <url>https://github.com/treblereel/gwt-nio</url>
-  <organization>
-    <name>Dmitrii Tikhomirov</name>
-    <url>https://github.com/treblereel</url>
-  </organization>
+    <name>GWT NIO</name>
+    <description>GWT NIO</description>
+    <url>https://github.com/treblereel/gwt-nio</url>
+    <organization>
+        <name>Dmitrii Tikhomirov</name>
+        <url>https://github.com/treblereel</url>
+    </organization>
 
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
-  <developers>
-    <developer>
-      <name>The GWT Authors</name>
-      <organization>The GWT Project Authors</organization>
-      <url>https://github.com/gwtproject</url>
-    </developer>
-  </developers>
+    <developers>
+        <developer>
+            <name>The GWT Authors</name>
+            <organization>The GWT Project Authors</organization>
+            <url>https://github.com/gwtproject</url>
+        </developer>
+    </developers>
 
-  <scm>
-    <connection>scm:git:git://github.com/treblereel/gwt-nio.git</connection>
-    <developerConnection>scm:git:ssh://github.com/treblereel/gwt-nio.git</developerConnection>
-    <url>https://github.com/treblereel/gwt-nio/tree/master</url>
-    <tag>HEAD</tag>
-  </scm>
+    <scm>
+        <connection>scm:git:git://github.com/treblereel/gwt-nio.git</connection>
+        <developerConnection>scm:git:ssh://github.com/treblereel/gwt-nio.git</developerConnection>
+        <url>https://github.com/treblereel/gwt-nio/tree/master</url>
+        <tag>HEAD</tag>
+    </scm>
 
-  <inceptionYear>2020</inceptionYear>
+    <inceptionYear>2020</inceptionYear>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <elemental2.version>1.3.2</elemental2.version>
+        <elemental2.version>1.3.2</elemental2.version>
 
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-    <maven.source.version>3.0.1</maven.source.version>
-    <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
-    <maven.gpg.plugin>1.6</maven.gpg.plugin>
-    <maven.javadoc.plugin>3.1.1</maven.javadoc.plugin>
-    <maven.licence.plugin>3.0</maven.licence.plugin>
-    <maven.source.plugin>3.2.1</maven.source.plugin>
-    <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven.source.version>3.0.1</maven.source.version>
+        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+        <maven.gpg.plugin>1.6</maven.gpg.plugin>
+        <maven.javadoc.plugin>3.1.1</maven.javadoc.plugin>
+        <maven.licence.plugin>3.0</maven.licence.plugin>
+        <maven.source.plugin>3.2.1</maven.source.plugin>
+        <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
 
-    <jsinterop.annotations.version>2.1.0</jsinterop.annotations.version>
-  </properties>
+        <jsinterop.annotations.version>2.1.0</jsinterop.annotations.version>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.google.elemental2</groupId>
-      <artifactId>elemental2-core</artifactId>
-      <version>${elemental2.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.jsinterop</groupId>
-      <artifactId>jsinterop-annotations</artifactId>
-      <version>${jsinterop.annotations.version}</version>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-core</artifactId>
+            <version>${elemental2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.jsinterop</groupId>
+            <artifactId>jsinterop-annotations</artifactId>
+            <version>${jsinterop.annotations.version}</version>
+        </dependency>
+    </dependencies>
 
-  <build>
-    <resources>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.java</include>
-          <include>**/*.js</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
-    <plugins>
-      <plugin>
-        <groupId>com.mycila</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <version>${maven.licence.plugin}</version>
-        <configuration>
-          <header>LICENSE.header</header>
-          <encoding>UTF-8</encoding>
-          <skipExistingHeaders>true</skipExistingHeaders>
-          <mapping>
-            <java>SLASHSTAR_STYLE</java>
-          </mapping>
-          <excludes>
-            <exclude>**/README.md</exclude>
-            <exclude>**/LICENSE</exclude>
-            <exclude>**/LICENSE.header</exclude>
-            <exclude>**/AUTHORS</exclude>
-            <exclude>**/*.xml</exclude>
-            <exclude>**/*.native.js</exclude>
-            <exclude>src/test/resources/**</exclude>
-            <exclude>src/main/resources/**</exclude>
-          </excludes>
-          <properties>
-            <year>${project.inceptionYear}</year>
-            <name>${project.organization.name}</name>
-          </properties>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin}</version>
-        <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-          <compilerArgument>-proc:none</compilerArgument>
-          <excludes>
-<!--
-            <exclude>**/src/main/java/org/gwtproject/nio/emul/java/nio/**</exclude>
--->
-            <exclude>**/java/nio/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>${maven.source.version}</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>package</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>${maven.deploy.plugin}</version>
-      </plugin>
-    </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.17</version>
-          <executions>
-            <execution>
-              <id>validate</id>
-              <phase>validate</phase>
-              <configuration>
-                <encoding>UTF-8</encoding>
-                <consoleOutput>true</consoleOutput>
-                <failsOnError>true</failsOnError>
-                <configLocation>gwt-checkstyle.xml</configLocation>
-              </configuration>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-          <executions>
-            <execution>
-              <id>default-deploy</id>
-              <phase>deploy</phase>
-              <goals>
-                <goal>deploy</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
-          <configuration>
-            <localCheckout>true</localCheckout>
-            <pushChanges>false</pushChanges>
-            <mavenExecutorId>forked-path</mavenExecutorId>
-            <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-          </configuration>
-          <dependencies>
-            <dependency>
-              <groupId>org.apache.maven.scm</groupId>
-              <artifactId>maven-scm-provider-gitexe</artifactId>
-              <version>1.9.5</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-        <plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.7</version>
-          <extensions>true</extensions>
-          <configuration>
-            <serverId>ossrh</serverId>
-            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.js</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${maven.licence.plugin}</version>
+                <configuration>
+                    <header>LICENSE.header</header>
+                    <encoding>UTF-8</encoding>
+                    <skipExistingHeaders>true</skipExistingHeaders>
+                    <mapping>
+                        <java>SLASHSTAR_STYLE</java>
+                    </mapping>
+                    <excludes>
+                        <exclude>**/README.md</exclude>
+                        <exclude>**/LICENSE</exclude>
+                        <exclude>**/LICENSE.header</exclude>
+                        <exclude>**/AUTHORS</exclude>
+                        <exclude>**/*.xml</exclude>
+                        <exclude>**/*.native.js</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                        <exclude>src/main/resources/**</exclude>
+                    </excludes>
+                    <properties>
+                        <year>${project.inceptionYear}</year>
+                        <name>${project.organization.name}</name>
+                    </properties>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <compilerArgument>-proc:none</compilerArgument>
+                    <excludes>
+                        <exclude>**/java/nio/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.17</version>
+                    <executions>
+                        <execution>
+                            <id>validate</id>
+                            <phase>validate</phase>
+                            <configuration>
+                                <encoding>UTF-8</encoding>
+                                <consoleOutput>true</consoleOutput>
+                                <failsOnError>true</failsOnError>
+                                <configLocation>gwt-checkstyle.xml</configLocation>
+                            </configuration>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
   <profiles>
     <!-- release profile to create sources, javadoc, and sign all artifacts before uploading -->
@@ -269,7 +209,6 @@
               </execution>
             </executions>
           </plugin>
-          <!-- see http://central.sonatype.org/pages/working-with-pgp-signatures.html for more detail -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
@@ -289,6 +228,15 @@
                 <arg>loopback</arg>
               </gpgArguments>
             </configuration>
+          </plugin>
+          <plugin>
+              <groupId>org.sonatype.central</groupId>
+              <artifactId>central-publishing-maven-plugin</artifactId>
+              <version>0.9.0</version>
+              <extensions>true</extensions>
+              <configuration>
+                  <publishingServerId>sonatype</publishingServerId>
+              </configuration>
           </plugin>
         </plugins>
       </build>
