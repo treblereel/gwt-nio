@@ -21,24 +21,25 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
+import java.nio.BufferOverflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.LongBuffer;
 import org.junit.Before;
 import org.junit.Test;
 
-@J2clTestInput(DirectFloatBufferTest.class)
-public class DirectFloatBufferTest extends FloatBufferTest {
+@J2clTestInput(DirectLongBufferTest.class)
+public class DirectLongBufferTest extends LongBufferTest {
 
   @Before
   public void gwtSetUp() {
     super.gwtSetUp();
     capacity = BUFFER_LENGTH;
-    buf = ByteBuffer.allocateDirect(BUFFER_LENGTH * 4).asFloatBuffer();
+    buf = ByteBuffer.allocateDirect(BUFFER_LENGTH * 8).asLongBuffer();
     loadTestData1(buf);
     baseBuf = buf;
   }
 
-  @Test
   public void gwtTearDown() {
     buf = null;
     baseBuf = null;
@@ -76,5 +77,58 @@ public class DirectFloatBufferTest extends FloatBufferTest {
   @Test
   public void testOrder() {
     assertEquals(ByteOrder.BIG_ENDIAN, buf.order());
+  }
+
+  @Test
+  public void testPutWhenOffsetIsNonZero() {
+    ByteBuffer byteBuffer = ByteBuffer.allocateDirect(160);
+    byteBuffer.order(ByteOrder.nativeOrder());
+    LongBuffer longBuffer = byteBuffer.asLongBuffer();
+
+    long[] source = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+
+    longBuffer.put(source, 2, 2);
+    longBuffer.put(source, 4, 2);
+    assertEquals(4, longBuffer.get(0));
+    assertEquals(5, longBuffer.get(1));
+    assertEquals(6, longBuffer.get(2));
+    assertEquals(7, longBuffer.get(3));
+  }
+
+  @Test
+  public void testRangeChecks() {
+    long[] myLongs = new long[BUFFER_LENGTH];
+
+    for (int i = 0; i < BUFFER_LENGTH; i++) {
+      myLongs[i] = 1000 + i;
+    }
+
+    buf.position(0);
+    buf.put(myLongs, 0, BUFFER_LENGTH);
+    buf.position(0);
+    buf.put(myLongs, 0, BUFFER_LENGTH);
+
+    try {
+      buf.put(myLongs, 0, 1); // should fail
+      fail("BufferOverflowException expected but not thrown");
+    } catch (BufferOverflowException boe) {
+      // expected
+    }
+
+    try {
+      buf.position(0);
+      buf.put(myLongs, 0, BUFFER_LENGTH + 1); // should fail
+      fail("BufferOverflowException expected but not thrown");
+    } catch (IndexOutOfBoundsException ioobe) {
+      // expected
+    }
+
+    try {
+      buf.position(BUFFER_LENGTH - 1);
+      buf.put(myLongs, 0, 2); // should fail
+      fail("BufferOverflowException expected but not thrown");
+    } catch (BufferOverflowException boe) {
+      // expected
+    }
   }
 }

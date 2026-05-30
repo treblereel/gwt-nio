@@ -492,4 +492,19 @@ public abstract class DoubleBuffer extends Buffer implements Comparable<DoubleBu
     buf.append(limit());
     return buf.toString();
   }
+
+  @Override
+  public DoubleBuffer clear() { return (DoubleBuffer) super.clear(); }
+  @Override
+  public DoubleBuffer flip() { return (DoubleBuffer) super.flip(); }
+  @Override
+  public DoubleBuffer limit(int newLimit) { return (DoubleBuffer) super.limit(newLimit); }
+  @Override
+  public DoubleBuffer mark() { return (DoubleBuffer) super.mark(); }
+  @Override
+  public DoubleBuffer position(int newPosition) { return (DoubleBuffer) super.position(newPosition); }
+  @Override
+  public DoubleBuffer reset() { return (DoubleBuffer) super.reset(); }
+  @Override
+  public DoubleBuffer rewind() { return (DoubleBuffer) super.rewind(); }
 }

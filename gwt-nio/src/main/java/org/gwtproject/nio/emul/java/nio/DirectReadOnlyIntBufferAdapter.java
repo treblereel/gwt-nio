@@ -43,7 +43,7 @@ final class DirectReadOnlyIntBufferAdapter extends IntBuffer implements HasArray
     this.byteBuffer.clear();
 
     this.intArray =
-        new Int32Array(byteBuffer.getTypedArray(), byteBuffer.getTypedArray().byteOffset, capacity);
+        new Int32Array(byteBuffer.byteArray.buffer, byteBuffer.byteArray.byteOffset, capacity);
   }
 
   static IntBuffer wrap(DirectByteBuffer byteBuffer) {

@@ -613,7 +613,7 @@ public abstract class CharBuffer extends Buffer
    * @exception IndexOutOfBoundsException if either {@code start} or {@code end} is invalid.
    * @since Android 1.0
    */
-  public abstract CharSequence subSequence(int start, int end);
+  public abstract CharBuffer subSequence(int start, int end);
 
   /**
    * Returns a string representing the current remaining chars of this buffer.
@@ -701,6 +701,27 @@ public abstract class CharBuffer extends Buffer
    *     buffer.
    * @since Android 1.0
    */
+  @Override
+  public CharBuffer clear() { return (CharBuffer) super.clear(); }
+
+  @Override
+  public CharBuffer flip() { return (CharBuffer) super.flip(); }
+
+  @Override
+  public CharBuffer limit(int newLimit) { return (CharBuffer) super.limit(newLimit); }
+
+  @Override
+  public CharBuffer mark() { return (CharBuffer) super.mark(); }
+
+  @Override
+  public CharBuffer position(int newPosition) { return (CharBuffer) super.position(newPosition); }
+
+  @Override
+  public CharBuffer reset() { return (CharBuffer) super.reset(); }
+
+  @Override
+  public CharBuffer rewind() { return (CharBuffer) super.rewind(); }
+
   public int read(CharBuffer target) throws IOException {
     if (target == this) {
       throw new IllegalArgumentException();

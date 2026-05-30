@@ -43,8 +43,7 @@ final class DirectReadOnlyFloatBufferAdapter extends FloatBuffer implements HasA
     this.byteBuffer.clear();
 
     this.floatArray =
-        new Float32Array(
-            byteBuffer.getTypedArray(), byteBuffer.getTypedArray().byteOffset, capacity);
+        new Float32Array(byteBuffer.byteArray.buffer, byteBuffer.byteArray.byteOffset, capacity);
   }
 
   static FloatBuffer wrap(DirectByteBuffer byteBuffer) {
@@ -102,9 +101,9 @@ final class DirectReadOnlyFloatBufferAdapter extends FloatBuffer implements HasA
 
   @Override
   public float get() {
-    //        if (position == limit) {
-    //            throw new BufferUnderflowException();
-    //        }
+    if (position == limit) {
+      throw new BufferUnderflowException();
+    }
     return floatArray.getAt(position++).floatValue();
   }
 
@@ -118,7 +117,7 @@ final class DirectReadOnlyFloatBufferAdapter extends FloatBuffer implements HasA
     if (index < 0 || index >= limit) {
       throw new IndexOutOfBoundsException();
     }
-    return floatArray.getAt(index).intValue();
+    return floatArray.getAt(index).floatValue();
   }
 
   @Override

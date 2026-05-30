@@ -81,7 +81,7 @@ abstract class CharArrayBuffer extends CharBuffer {
     return ByteOrder.nativeOrder();
   }
 
-  public final CharSequence subSequence(int start, int end) {
+  public final CharBuffer subSequence(int start, int end) {
     if (start < 0 || end < start || end > remaining()) {
       throw new IndexOutOfBoundsException();
     }

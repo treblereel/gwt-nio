@@ -935,6 +935,27 @@ public abstract class ByteBuffer extends Buffer
     return buf.toString();
   }
 
+  @Override
+  public ByteBuffer clear() { return (ByteBuffer) super.clear(); }
+
+  @Override
+  public ByteBuffer flip() { return (ByteBuffer) super.flip(); }
+
+  @Override
+  public ByteBuffer limit(int newLimit) { return (ByteBuffer) super.limit(newLimit); }
+
+  @Override
+  public ByteBuffer mark() { return (ByteBuffer) super.mark(); }
+
+  @Override
+  public ByteBuffer position(int newPosition) { return (ByteBuffer) super.position(newPosition); }
+
+  @Override
+  public ByteBuffer reset() { return (ByteBuffer) super.reset(); }
+
+  @Override
+  public ByteBuffer rewind() { return (ByteBuffer) super.rewind(); }
+
   public ByteBuffer stringToByteBuffer(String s) {
     return new java.nio.StringByteBuffer(s);
   }

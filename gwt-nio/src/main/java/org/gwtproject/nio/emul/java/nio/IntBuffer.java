@@ -489,4 +489,19 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
     buf.append(limit());
     return buf.toString();
   }
+
+  @Override
+  public IntBuffer clear() { return (IntBuffer) super.clear(); }
+  @Override
+  public IntBuffer flip() { return (IntBuffer) super.flip(); }
+  @Override
+  public IntBuffer limit(int newLimit) { return (IntBuffer) super.limit(newLimit); }
+  @Override
+  public IntBuffer mark() { return (IntBuffer) super.mark(); }
+  @Override
+  public IntBuffer position(int newPosition) { return (IntBuffer) super.position(newPosition); }
+  @Override
+  public IntBuffer reset() { return (IntBuffer) super.reset(); }
+  @Override
+  public IntBuffer rewind() { return (IntBuffer) super.rewind(); }
 }

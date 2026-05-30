@@ -492,4 +492,19 @@ public abstract class FloatBuffer extends Buffer implements Comparable<FloatBuff
     buf.append(limit());
     return buf.toString();
   }
+
+  @Override
+  public FloatBuffer clear() { return (FloatBuffer) super.clear(); }
+  @Override
+  public FloatBuffer flip() { return (FloatBuffer) super.flip(); }
+  @Override
+  public FloatBuffer limit(int newLimit) { return (FloatBuffer) super.limit(newLimit); }
+  @Override
+  public FloatBuffer mark() { return (FloatBuffer) super.mark(); }
+  @Override
+  public FloatBuffer position(int newPosition) { return (FloatBuffer) super.position(newPosition); }
+  @Override
+  public FloatBuffer reset() { return (FloatBuffer) super.reset(); }
+  @Override
+  public FloatBuffer rewind() { return (FloatBuffer) super.rewind(); }
 }

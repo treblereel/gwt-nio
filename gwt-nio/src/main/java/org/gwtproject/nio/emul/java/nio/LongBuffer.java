@@ -492,4 +492,19 @@ public abstract class LongBuffer extends Buffer implements Comparable<LongBuffer
     buf.append(limit());
     return buf.toString();
   }
+
+  @Override
+  public LongBuffer clear() { return (LongBuffer) super.clear(); }
+  @Override
+  public LongBuffer flip() { return (LongBuffer) super.flip(); }
+  @Override
+  public LongBuffer limit(int newLimit) { return (LongBuffer) super.limit(newLimit); }
+  @Override
+  public LongBuffer mark() { return (LongBuffer) super.mark(); }
+  @Override
+  public LongBuffer position(int newPosition) { return (LongBuffer) super.position(newPosition); }
+  @Override
+  public LongBuffer reset() { return (LongBuffer) super.reset(); }
+  @Override
+  public LongBuffer rewind() { return (LongBuffer) super.rewind(); }
 }
