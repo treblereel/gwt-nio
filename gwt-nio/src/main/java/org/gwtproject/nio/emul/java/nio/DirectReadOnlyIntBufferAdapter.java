@@ -80,6 +80,18 @@ final class DirectReadOnlyIntBufferAdapter extends IntBuffer implements HasArray
   }
 
   @Override
+  public IntBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 2);
+    byteBuffer.position(index << 2);
+    IntBuffer result = new DirectReadOnlyIntBufferAdapter((DirectByteBuffer) byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
+  @Override
   public IntBuffer duplicate() {
     DirectReadOnlyIntBufferAdapter buf =
         new DirectReadOnlyIntBufferAdapter((DirectByteBuffer) byteBuffer.duplicate());

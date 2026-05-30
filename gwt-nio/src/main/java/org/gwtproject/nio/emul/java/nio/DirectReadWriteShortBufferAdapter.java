@@ -81,6 +81,19 @@ final class DirectReadWriteShortBufferAdapter extends ShortBuffer implements Has
   }
 
   @Override
+  public ShortBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 1);
+    byteBuffer.position(index << 1);
+    ShortBuffer result =
+        new DirectReadWriteShortBufferAdapter((DirectReadWriteByteBuffer) byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
+  @Override
   public ShortBuffer duplicate() {
     DirectReadWriteShortBufferAdapter buf =
         new DirectReadWriteShortBufferAdapter((DirectReadWriteByteBuffer) byteBuffer.duplicate());

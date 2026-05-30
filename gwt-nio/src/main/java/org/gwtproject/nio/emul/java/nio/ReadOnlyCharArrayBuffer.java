@@ -95,4 +95,11 @@ final class ReadOnlyCharArrayBuffer extends CharArrayBuffer {
   public CharBuffer slice() {
     return new ReadOnlyCharArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public CharBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadOnlyCharArrayBuffer(length, backingArray, offset + index);
+  }
 }

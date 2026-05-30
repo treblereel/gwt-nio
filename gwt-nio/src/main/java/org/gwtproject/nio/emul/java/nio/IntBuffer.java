@@ -472,6 +472,64 @@ public abstract class IntBuffer extends Buffer implements Comparable<IntBuffer> 
    */
   public abstract IntBuffer slice();
 
+  public abstract IntBuffer slice(int index, int length);
+
+  public IntBuffer get(int index, int[] dst) {
+    return get(index, dst, 0, dst.length);
+  }
+
+  public IntBuffer get(int index, int[] dst, int offset, int length) {
+    if (index < 0 || offset < 0 || length < 0
+        || length > dst.length - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      dst[offset + i] = get(index + i);
+    }
+    return this;
+  }
+
+  public IntBuffer put(int index, int[] src) {
+    return put(index, src, 0, src.length);
+  }
+
+  public IntBuffer put(int index, int[] src, int offset, int length) {
+    if (index < 0 || offset < 0 || length < 0
+        || length > src.length - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      put(index + i, src[offset + i]);
+    }
+    return this;
+  }
+
+  public IntBuffer put(int index, IntBuffer src, int offset, int length) {
+    if (src == this) {
+      throw new IllegalArgumentException();
+    }
+    if (index < 0 || offset < 0 || length < 0
+        || length > src.limit() - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      put(index + i, src.get(offset + i));
+    }
+    return this;
+  }
+
+  public int mismatch(IntBuffer that) {
+    int thisPos = this.position();
+    int thatPos = that.position();
+    int len = Math.min(this.remaining(), that.remaining());
+    for (int i = 0; i < len; i++) {
+      if (this.get(thisPos + i) != that.get(thatPos + i)) {
+        return i;
+      }
+    }
+    return this.remaining() != that.remaining() ? len : -1;
+  }
+
   /**
    * Returns a string represents of the state of this int buffer.
    *

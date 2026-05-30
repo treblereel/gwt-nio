@@ -152,4 +152,15 @@ final class DirectReadOnlyByteBuffer extends DirectByteBuffer {
     slice.order = order;
     return slice;
   }
+
+  public ByteBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    DirectReadOnlyByteBuffer slice =
+        new DirectReadOnlyByteBuffer(
+            byteArray.buffer, length, byteArray.byteOffset + index);
+    slice.order = order;
+    return slice;
+  }
 }

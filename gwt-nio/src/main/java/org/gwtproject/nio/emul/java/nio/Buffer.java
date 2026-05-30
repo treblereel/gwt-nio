@@ -85,6 +85,33 @@ public abstract class Buffer {
   }
 
   /**
+   * Creates a new buffer that shares this buffer's content.
+   *
+   * @return a new buffer that shares this buffer's content.
+   * @since 9
+   */
+  public abstract Buffer duplicate();
+
+  /**
+   * Creates a new buffer whose content is a shared subsequence of this buffer's content.
+   *
+   * @return the new buffer.
+   * @since 9
+   */
+  public abstract Buffer slice();
+
+  /**
+   * Creates a new buffer whose content is a shared subsequence of this buffer's content.
+   *
+   * @param index position in this buffer at which the content of the new buffer will start
+   * @param length number of elements the new buffer will contain
+   * @return the new buffer.
+   * @throws IndexOutOfBoundsException if index or length are out of bounds
+   * @since 13
+   */
+  public abstract Buffer slice(int index, int length);
+
+  /**
    * Returns the capacity of this buffer.
    *
    * @return the number of elements that are contained in this buffer.

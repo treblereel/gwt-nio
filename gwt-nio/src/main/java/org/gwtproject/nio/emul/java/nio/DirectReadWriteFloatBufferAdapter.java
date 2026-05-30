@@ -80,6 +80,19 @@ final class DirectReadWriteFloatBufferAdapter extends FloatBuffer implements Has
   }
 
   @Override
+  public FloatBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 2);
+    byteBuffer.position(index << 2);
+    FloatBuffer result =
+        new DirectReadWriteFloatBufferAdapter((DirectReadWriteByteBuffer) byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
+  @Override
   public FloatBuffer duplicate() {
     DirectReadWriteFloatBufferAdapter buf =
         new DirectReadWriteFloatBufferAdapter((DirectReadWriteByteBuffer) byteBuffer.duplicate());

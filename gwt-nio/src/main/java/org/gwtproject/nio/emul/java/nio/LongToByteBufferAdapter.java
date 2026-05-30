@@ -198,4 +198,16 @@ final class LongToByteBufferAdapter extends LongBuffer { // implements DirectBuf
     byteBuffer.clear();
     return result;
   }
+
+  @Override
+  public LongBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 3);
+    byteBuffer.position(index << 3);
+    LongBuffer result = new LongToByteBufferAdapter(byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
 }

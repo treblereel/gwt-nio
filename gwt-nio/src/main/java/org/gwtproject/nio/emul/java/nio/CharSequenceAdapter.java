@@ -138,6 +138,13 @@ final class CharSequenceAdapter extends CharBuffer {
     return new CharSequenceAdapter(sequence.subSequence(position, limit));
   }
 
+  public CharBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new CharSequenceAdapter(sequence.subSequence(index, index + length));
+  }
+
   public CharBuffer subSequence(int start, int end) {
     if (end < start || start < 0 || end > remaining()) {
       throw new IndexOutOfBoundsException();

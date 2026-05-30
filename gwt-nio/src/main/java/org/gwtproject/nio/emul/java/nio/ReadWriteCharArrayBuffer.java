@@ -112,4 +112,11 @@ final class ReadWriteCharArrayBuffer extends CharArrayBuffer {
   public CharBuffer slice() {
     return new ReadWriteCharArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public CharBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadWriteCharArrayBuffer(length, backingArray, offset + index);
+  }
 }

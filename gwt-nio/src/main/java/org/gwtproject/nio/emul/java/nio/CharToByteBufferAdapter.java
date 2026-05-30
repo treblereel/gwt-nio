@@ -200,6 +200,18 @@ final class CharToByteBufferAdapter extends CharBuffer { // implements DirectBuf
   }
 
   @Override
+  public CharBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 1);
+    byteBuffer.position(index << 1);
+    CharBuffer result = new CharToByteBufferAdapter(byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
+  @Override
   public CharBuffer subSequence(int start, int end) {
     if (start < 0 || end < start || end > remaining()) {
       throw new IndexOutOfBoundsException();

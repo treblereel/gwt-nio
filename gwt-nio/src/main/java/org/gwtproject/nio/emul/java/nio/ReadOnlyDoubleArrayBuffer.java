@@ -88,4 +88,11 @@ final class ReadOnlyDoubleArrayBuffer extends DoubleArrayBuffer {
   public DoubleBuffer slice() {
     return new ReadOnlyDoubleArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public DoubleBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadOnlyDoubleArrayBuffer(length, backingArray, offset + index);
+  }
 }

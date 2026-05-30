@@ -199,4 +199,16 @@ final class DoubleToByteBufferAdapter extends DoubleBuffer {
     byteBuffer.clear();
     return result;
   }
+
+  @Override
+  public DoubleBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 3);
+    byteBuffer.position(index << 3);
+    DoubleBuffer result = new DoubleToByteBufferAdapter(byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
 }

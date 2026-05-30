@@ -199,4 +199,16 @@ final class FloatToByteBufferAdapter extends FloatBuffer {
     byteBuffer.clear();
     return result;
   }
+
+  @Override
+  public FloatBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 2);
+    byteBuffer.position(index << 2);
+    FloatBuffer result = new FloatToByteBufferAdapter(byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
 }

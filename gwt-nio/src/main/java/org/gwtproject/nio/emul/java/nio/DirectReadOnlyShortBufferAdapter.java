@@ -133,6 +133,19 @@ final class DirectReadOnlyShortBufferAdapter extends ShortBuffer implements HasA
     return result;
   }
 
+  @Override
+  public ShortBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 1);
+    byteBuffer.position(index << 1);
+    ShortBuffer result =
+        new DirectReadOnlyShortBufferAdapter((DirectByteBuffer) byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
   public ArrayBufferView getTypedArray() {
     return shortArray;
   }

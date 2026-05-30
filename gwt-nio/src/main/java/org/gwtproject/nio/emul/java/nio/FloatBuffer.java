@@ -475,6 +475,64 @@ public abstract class FloatBuffer extends Buffer implements Comparable<FloatBuff
    */
   public abstract FloatBuffer slice();
 
+  public abstract FloatBuffer slice(int index, int length);
+
+  public FloatBuffer get(int index, float[] dst) {
+    return get(index, dst, 0, dst.length);
+  }
+
+  public FloatBuffer get(int index, float[] dst, int offset, int length) {
+    if (index < 0 || offset < 0 || length < 0
+        || length > dst.length - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      dst[offset + i] = get(index + i);
+    }
+    return this;
+  }
+
+  public FloatBuffer put(int index, float[] src) {
+    return put(index, src, 0, src.length);
+  }
+
+  public FloatBuffer put(int index, float[] src, int offset, int length) {
+    if (index < 0 || offset < 0 || length < 0
+        || length > src.length - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      put(index + i, src[offset + i]);
+    }
+    return this;
+  }
+
+  public FloatBuffer put(int index, FloatBuffer src, int offset, int length) {
+    if (src == this) {
+      throw new IllegalArgumentException();
+    }
+    if (index < 0 || offset < 0 || length < 0
+        || length > src.limit() - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      put(index + i, src.get(offset + i));
+    }
+    return this;
+  }
+
+  public int mismatch(FloatBuffer that) {
+    int thisPos = this.position();
+    int thatPos = that.position();
+    int len = Math.min(this.remaining(), that.remaining());
+    for (int i = 0; i < len; i++) {
+      if (Float.compare(this.get(thisPos + i), that.get(thatPos + i)) != 0) {
+        return i;
+      }
+    }
+    return this.remaining() != that.remaining() ? len : -1;
+  }
+
   /**
    * Returns a string representing the state of this float buffer.
    *

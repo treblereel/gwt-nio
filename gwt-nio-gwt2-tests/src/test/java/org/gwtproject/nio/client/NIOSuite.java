@@ -20,7 +20,8 @@ public class NIOSuite {
     suite.addTestSuite(DirectDoubleBufferTest.class);
     // suite.addTestSuite(DirectFloatBufferTest.class); //TODO
     suite.addTestSuite(DirectIntBufferTest.class);
-    suite.addTestSuite(DirectIntBufferTest.class);
+    suite.addTestSuite(DirectLongBufferTest.class);
+    suite.addTestSuite(DirectShortBufferTest.class);
     suite.addTestSuite(DoubleBufferTest.class);
     suite.addTestSuite(FloatBufferTest.class);
     suite.addTestSuite(IntBufferTest.class);

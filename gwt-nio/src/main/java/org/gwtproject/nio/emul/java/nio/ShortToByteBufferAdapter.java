@@ -197,6 +197,18 @@ final class ShortToByteBufferAdapter extends ShortBuffer implements ByteBufferWr
     return result;
   }
 
+  @Override
+  public ShortBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 1);
+    byteBuffer.position(index << 1);
+    ShortBuffer result = new ShortToByteBufferAdapter(byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
   public ByteBuffer getByteBuffer() {
     return byteBuffer;
   }

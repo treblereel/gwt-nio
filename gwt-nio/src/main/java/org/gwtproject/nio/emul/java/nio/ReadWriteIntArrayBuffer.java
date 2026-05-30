@@ -112,4 +112,11 @@ final class ReadWriteIntArrayBuffer extends IntArrayBuffer {
   public IntBuffer slice() {
     return new ReadWriteIntArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public IntBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadWriteIntArrayBuffer(length, backingArray, offset + index);
+  }
 }

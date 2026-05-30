@@ -53,6 +53,16 @@ class StringByteBuffer extends BaseByteBuffer {
   }
 
   @Override
+  public ByteBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    StringByteBuffer slice = new StringByteBuffer(s, index, index + length);
+    slice.order = order;
+    return slice;
+  }
+
+  @Override
   public ByteBuffer duplicate() {
     return this;
   }

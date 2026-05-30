@@ -223,4 +223,15 @@ public final class DirectReadWriteByteBuffer extends DirectByteBuffer {
     slice.order = order;
     return slice;
   }
+
+  public ByteBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    DirectReadWriteByteBuffer slice =
+        new DirectReadWriteByteBuffer(
+            byteArray.buffer, length, byteArray.byteOffset + index);
+    slice.order = order;
+    return slice;
+  }
 }

@@ -132,4 +132,14 @@ final class ReadOnlyHeapByteBuffer extends HeapByteBuffer {
     slice.order = order;
     return slice;
   }
+
+  public ByteBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    ReadOnlyHeapByteBuffer slice =
+        new ReadOnlyHeapByteBuffer(backingArray, length, offset + index);
+    slice.order = order;
+    return slice;
+  }
 }

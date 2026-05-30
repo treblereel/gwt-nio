@@ -112,4 +112,11 @@ final class ReadWriteLongArrayBuffer extends LongArrayBuffer {
   public LongBuffer slice() {
     return new ReadWriteLongArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public LongBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadWriteLongArrayBuffer(length, backingArray, offset + index);
+  }
 }

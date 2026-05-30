@@ -18,6 +18,8 @@ package org.gwtproject.nio.client;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -285,6 +287,56 @@ public abstract class AbstractBufferTest {
     }
 
     // restore state
+    baseBuf.limit(oldLimit);
+    baseBuf.position(oldPosition);
+  }
+
+  @Test
+  public void testDuplicate() {
+    int oldPosition = baseBuf.position();
+    int oldLimit = baseBuf.limit();
+
+    Buffer dup = baseBuf.duplicate();
+    assertNotNull(dup);
+    assertNotSame(baseBuf, dup);
+    assertEquals(baseBuf.position(), dup.position());
+    assertEquals(baseBuf.limit(), dup.limit());
+    assertEquals(baseBuf.capacity(), dup.capacity());
+    assertEquals(baseBuf.isReadOnly(), dup.isReadOnly());
+
+    dup.position(0);
+    assertEquals(oldPosition, baseBuf.position());
+
+    dup.limit(dup.capacity());
+    assertEquals(oldLimit, baseBuf.limit());
+
+    baseBuf.limit(oldLimit);
+    baseBuf.position(oldPosition);
+  }
+
+  @Test
+  public void testSlice() {
+    int oldPosition = baseBuf.position();
+    int oldLimit = baseBuf.limit();
+
+    baseBuf.position(1);
+    Buffer slice = baseBuf.slice();
+    assertNotNull(slice);
+    assertEquals(0, slice.position());
+    assertEquals(baseBuf.remaining(), slice.limit());
+    assertEquals(baseBuf.remaining(), slice.capacity());
+    assertEquals(baseBuf.isReadOnly(), slice.isReadOnly());
+
+    try {
+      slice.reset();
+      fail("Should throw InvalidMarkException");
+    } catch (InvalidMarkException e) {
+      // expected
+    }
+
+    slice.position(slice.limit());
+    assertEquals(1, baseBuf.position());
+
     baseBuf.limit(oldLimit);
     baseBuf.position(oldPosition);
   }

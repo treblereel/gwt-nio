@@ -112,4 +112,11 @@ final class ReadWriteShortArrayBuffer extends ShortArrayBuffer {
   public ShortBuffer slice() {
     return new ReadWriteShortArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public ShortBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadWriteShortArrayBuffer(length, backingArray, offset + index);
+  }
 }

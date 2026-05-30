@@ -88,4 +88,11 @@ final class ReadOnlyShortArrayBuffer extends ShortArrayBuffer {
   public ShortBuffer slice() {
     return new ReadOnlyShortArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public ShortBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadOnlyShortArrayBuffer(length, backingArray, offset + index);
+  }
 }

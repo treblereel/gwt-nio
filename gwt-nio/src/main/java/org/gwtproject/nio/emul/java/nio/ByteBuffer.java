@@ -917,6 +917,64 @@ public abstract class ByteBuffer extends Buffer
    */
   public abstract ByteBuffer slice();
 
+  public abstract ByteBuffer slice(int index, int length);
+
+  public ByteBuffer get(int index, byte[] dst) {
+    return get(index, dst, 0, dst.length);
+  }
+
+  public ByteBuffer get(int index, byte[] dst, int offset, int length) {
+    if (index < 0 || offset < 0 || length < 0
+        || length > dst.length - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      dst[offset + i] = get(index + i);
+    }
+    return this;
+  }
+
+  public ByteBuffer put(int index, byte[] src) {
+    return put(index, src, 0, src.length);
+  }
+
+  public ByteBuffer put(int index, byte[] src, int offset, int length) {
+    if (index < 0 || offset < 0 || length < 0
+        || length > src.length - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      put(index + i, src[offset + i]);
+    }
+    return this;
+  }
+
+  public ByteBuffer put(int index, ByteBuffer src, int offset, int length) {
+    if (src == this) {
+      throw new IllegalArgumentException();
+    }
+    if (index < 0 || offset < 0 || length < 0
+        || length > src.limit() - offset || index + length > limit()) {
+      throw new IndexOutOfBoundsException();
+    }
+    for (int i = 0; i < length; i++) {
+      put(index + i, src.get(offset + i));
+    }
+    return this;
+  }
+
+  public int mismatch(ByteBuffer that) {
+    int thisPos = this.position();
+    int thatPos = that.position();
+    int len = Math.min(this.remaining(), that.remaining());
+    for (int i = 0; i < len; i++) {
+      if (this.get(thisPos + i) != that.get(thatPos + i)) {
+        return i;
+      }
+    }
+    return this.remaining() != that.remaining() ? len : -1;
+  }
+
   /**
    * Returns a string representing the state of this byte buffer.
    *

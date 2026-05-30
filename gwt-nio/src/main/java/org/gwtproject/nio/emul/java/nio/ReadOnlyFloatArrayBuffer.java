@@ -88,4 +88,11 @@ final class ReadOnlyFloatArrayBuffer extends FloatArrayBuffer {
   public FloatBuffer slice() {
     return new ReadOnlyFloatArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public FloatBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadOnlyFloatArrayBuffer(length, backingArray, offset + index);
+  }
 }

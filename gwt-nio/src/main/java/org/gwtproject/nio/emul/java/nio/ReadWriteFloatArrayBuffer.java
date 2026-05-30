@@ -112,4 +112,11 @@ final class ReadWriteFloatArrayBuffer extends FloatArrayBuffer {
   public FloatBuffer slice() {
     return new ReadWriteFloatArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public FloatBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadWriteFloatArrayBuffer(length, backingArray, offset + index);
+  }
 }

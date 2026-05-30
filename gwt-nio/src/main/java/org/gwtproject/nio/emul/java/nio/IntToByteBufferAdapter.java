@@ -197,6 +197,18 @@ final class IntToByteBufferAdapter extends IntBuffer implements ByteBufferWrappe
     return result;
   }
 
+  @Override
+  public IntBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    byteBuffer.limit((index + length) << 2);
+    byteBuffer.position(index << 2);
+    IntBuffer result = new IntToByteBufferAdapter(byteBuffer.slice());
+    byteBuffer.clear();
+    return result;
+  }
+
   public ByteBuffer getByteBuffer() {
     return byteBuffer;
   }

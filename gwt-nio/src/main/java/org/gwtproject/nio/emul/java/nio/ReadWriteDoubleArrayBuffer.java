@@ -112,4 +112,11 @@ final class ReadWriteDoubleArrayBuffer extends DoubleArrayBuffer {
   public DoubleBuffer slice() {
     return new ReadWriteDoubleArrayBuffer(remaining(), backingArray, offset + position);
   }
+
+  public DoubleBuffer slice(int index, int length) {
+    if (index < 0 || length < 0 || index + length > limit) {
+      throw new IndexOutOfBoundsException();
+    }
+    return new ReadWriteDoubleArrayBuffer(length, backingArray, offset + index);
+  }
 }
