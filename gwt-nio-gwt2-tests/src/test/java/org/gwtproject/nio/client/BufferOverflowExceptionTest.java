@@ -21,7 +21,9 @@ import java.nio.BufferOverflowException;
 
 public class BufferOverflowExceptionTest extends GWTTestCase {
 
-  /** @tests {@link java.nio.BufferOverflowException#BufferOverflowException()} */
+  /**
+   * @tests {@link java.nio.BufferOverflowException#BufferOverflowException()}
+   */
   public void test_Constructor() {
     BufferOverflowException exception = new BufferOverflowException();
     assertNull(exception.getMessage());

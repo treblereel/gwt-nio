@@ -6,76 +6,32 @@
   <parent>
     <groupId>org.treblereel.gwt.nio</groupId>
     <artifactId>gwt-nio-parent</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
   </parent>
-  <artifactId>gwt-nio-j2cl-tests</artifactId>
 
+  <artifactId>gwt-nio-j2cl-tests</artifactId>
   <name>GWT NIO - J2CL Tests</name>
   <description>Test cases for the J2Cl tests</description>
-  <url>https://github.com/gwtproject/gwt-nio</url>
-
-  <organization>
-    <name>The GWT Authors</name>
-    <url>https://github.com/gwtproject</url>
-  </organization>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <developers>
-    <developer>
-      <name>The GWT Authors</name>
-      <organization>The GWT Project Authors</organization>
-      <url>https://github.com/gwtproject</url>
-    </developer>
-  </developers>
-
-  <inceptionYear>2020</inceptionYear>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-
-    <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
-    <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
-    <maven.findbugs.plugin>3.0.5</maven.findbugs.plugin>
-    <maven.install.plugin>3.0.0-M1</maven.install.plugin>
-    <maven.jar.plugin>3.1.2</maven.jar.plugin>
-    <maven.j2cl.plugin>0.23.8</maven.j2cl.plugin>
-    <maven.licence.plugin>3.0</maven.licence.plugin>
-    <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
-
-    <j2cl.version>v20250822-1</j2cl.version>
-  </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.treblereel.gwt.nio</groupId>
       <artifactId>gwt-nio</artifactId>
-      <version>1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.kie.j2cl.tools</groupId>
       <artifactId>junit-annotations</artifactId>
-      <version>${j2cl.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.kie.j2cl.tools</groupId>
       <artifactId>gwttestcase-emul</artifactId>
-      <version>${j2cl.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.kie.j2cl.tools</groupId>
       <artifactId>junit-emul</artifactId>
-      <version>${j2cl.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

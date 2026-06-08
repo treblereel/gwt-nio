@@ -3,7 +3,9 @@ package org.gwtproject.nio.client;
 import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.Test;
 
-/** @author Dmitrii Tikhomirov Created by treblereel 5/5/20 */
+/**
+ * @author Dmitrii Tikhomirov Created by treblereel 5/5/20
+ */
 public class NIOSuite {
 
   public static Test suite() {

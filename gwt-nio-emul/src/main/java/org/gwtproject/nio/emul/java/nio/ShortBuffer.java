@@ -477,8 +477,11 @@ public abstract class ShortBuffer extends Buffer implements Comparable<ShortBuff
   }
 
   public ShortBuffer get(int index, short[] dst, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > dst.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > dst.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -492,8 +495,11 @@ public abstract class ShortBuffer extends Buffer implements Comparable<ShortBuff
   }
 
   public ShortBuffer put(int index, short[] src, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -506,8 +512,11 @@ public abstract class ShortBuffer extends Buffer implements Comparable<ShortBuff
     if (src == this) {
       throw new IllegalArgumentException();
     }
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.limit() - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.limit() - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -547,17 +556,37 @@ public abstract class ShortBuffer extends Buffer implements Comparable<ShortBuff
   }
 
   @Override
-  public ShortBuffer clear() { return (ShortBuffer) super.clear(); }
+  public ShortBuffer clear() {
+    return (ShortBuffer) super.clear();
+  }
+
   @Override
-  public ShortBuffer flip() { return (ShortBuffer) super.flip(); }
+  public ShortBuffer flip() {
+    return (ShortBuffer) super.flip();
+  }
+
   @Override
-  public ShortBuffer limit(int newLimit) { return (ShortBuffer) super.limit(newLimit); }
+  public ShortBuffer limit(int newLimit) {
+    return (ShortBuffer) super.limit(newLimit);
+  }
+
   @Override
-  public ShortBuffer mark() { return (ShortBuffer) super.mark(); }
+  public ShortBuffer mark() {
+    return (ShortBuffer) super.mark();
+  }
+
   @Override
-  public ShortBuffer position(int newPosition) { return (ShortBuffer) super.position(newPosition); }
+  public ShortBuffer position(int newPosition) {
+    return (ShortBuffer) super.position(newPosition);
+  }
+
   @Override
-  public ShortBuffer reset() { return (ShortBuffer) super.reset(); }
+  public ShortBuffer reset() {
+    return (ShortBuffer) super.reset();
+  }
+
   @Override
-  public ShortBuffer rewind() { return (ShortBuffer) super.rewind(); }
+  public ShortBuffer rewind() {
+    return (ShortBuffer) super.rewind();
+  }
 }

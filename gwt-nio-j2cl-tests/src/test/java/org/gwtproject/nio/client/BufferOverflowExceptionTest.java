@@ -25,7 +25,9 @@ import org.junit.Test;
 @J2clTestInput(BufferOverflowExceptionTest.class)
 public class BufferOverflowExceptionTest {
 
-  /** @tests {@link BufferOverflowException#BufferOverflowException()} */
+  /**
+   * @tests {@link BufferOverflowException#BufferOverflowException()}
+   */
   @Test
   public void test_Constructor() {
     BufferOverflowException exception = new BufferOverflowException();

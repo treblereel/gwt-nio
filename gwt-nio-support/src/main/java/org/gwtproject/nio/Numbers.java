@@ -14,7 +14,7 @@
  * the License.
  */
 
-package java.nio;
+package org.gwtproject.nio;
 
 import elemental2.core.Float32Array;
 import elemental2.core.Float64Array;

@@ -482,8 +482,11 @@ public abstract class DoubleBuffer extends Buffer implements Comparable<DoubleBu
   }
 
   public DoubleBuffer get(int index, double[] dst, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > dst.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > dst.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -497,8 +500,11 @@ public abstract class DoubleBuffer extends Buffer implements Comparable<DoubleBu
   }
 
   public DoubleBuffer put(int index, double[] src, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -511,8 +517,11 @@ public abstract class DoubleBuffer extends Buffer implements Comparable<DoubleBu
     if (src == this) {
       throw new IllegalArgumentException();
     }
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.limit() - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.limit() - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -552,17 +561,37 @@ public abstract class DoubleBuffer extends Buffer implements Comparable<DoubleBu
   }
 
   @Override
-  public DoubleBuffer clear() { return (DoubleBuffer) super.clear(); }
+  public DoubleBuffer clear() {
+    return (DoubleBuffer) super.clear();
+  }
+
   @Override
-  public DoubleBuffer flip() { return (DoubleBuffer) super.flip(); }
+  public DoubleBuffer flip() {
+    return (DoubleBuffer) super.flip();
+  }
+
   @Override
-  public DoubleBuffer limit(int newLimit) { return (DoubleBuffer) super.limit(newLimit); }
+  public DoubleBuffer limit(int newLimit) {
+    return (DoubleBuffer) super.limit(newLimit);
+  }
+
   @Override
-  public DoubleBuffer mark() { return (DoubleBuffer) super.mark(); }
+  public DoubleBuffer mark() {
+    return (DoubleBuffer) super.mark();
+  }
+
   @Override
-  public DoubleBuffer position(int newPosition) { return (DoubleBuffer) super.position(newPosition); }
+  public DoubleBuffer position(int newPosition) {
+    return (DoubleBuffer) super.position(newPosition);
+  }
+
   @Override
-  public DoubleBuffer reset() { return (DoubleBuffer) super.reset(); }
+  public DoubleBuffer reset() {
+    return (DoubleBuffer) super.reset();
+  }
+
   @Override
-  public DoubleBuffer rewind() { return (DoubleBuffer) super.rewind(); }
+  public DoubleBuffer rewind() {
+    return (DoubleBuffer) super.rewind();
+  }
 }

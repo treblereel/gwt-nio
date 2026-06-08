@@ -16,6 +16,8 @@
 
 package java.nio;
 
+import org.gwtproject.nio.Numbers;
+
 class StringByteBuffer extends BaseByteBuffer {
 
   private String s;

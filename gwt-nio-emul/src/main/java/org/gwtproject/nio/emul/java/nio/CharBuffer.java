@@ -602,8 +602,11 @@ public abstract class CharBuffer extends Buffer
   }
 
   public CharBuffer get(int index, char[] dst, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > dst.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > dst.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -617,8 +620,11 @@ public abstract class CharBuffer extends Buffer
   }
 
   public CharBuffer put(int index, char[] src, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -631,8 +637,11 @@ public abstract class CharBuffer extends Buffer
     if (src == this) {
       throw new IllegalArgumentException();
     }
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.limit() - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.limit() - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -764,25 +773,39 @@ public abstract class CharBuffer extends Buffer
    * @since Android 1.0
    */
   @Override
-  public CharBuffer clear() { return (CharBuffer) super.clear(); }
+  public CharBuffer clear() {
+    return (CharBuffer) super.clear();
+  }
 
   @Override
-  public CharBuffer flip() { return (CharBuffer) super.flip(); }
+  public CharBuffer flip() {
+    return (CharBuffer) super.flip();
+  }
 
   @Override
-  public CharBuffer limit(int newLimit) { return (CharBuffer) super.limit(newLimit); }
+  public CharBuffer limit(int newLimit) {
+    return (CharBuffer) super.limit(newLimit);
+  }
 
   @Override
-  public CharBuffer mark() { return (CharBuffer) super.mark(); }
+  public CharBuffer mark() {
+    return (CharBuffer) super.mark();
+  }
 
   @Override
-  public CharBuffer position(int newPosition) { return (CharBuffer) super.position(newPosition); }
+  public CharBuffer position(int newPosition) {
+    return (CharBuffer) super.position(newPosition);
+  }
 
   @Override
-  public CharBuffer reset() { return (CharBuffer) super.reset(); }
+  public CharBuffer reset() {
+    return (CharBuffer) super.reset();
+  }
 
   @Override
-  public CharBuffer rewind() { return (CharBuffer) super.rewind(); }
+  public CharBuffer rewind() {
+    return (CharBuffer) super.rewind();
+  }
 
   public int read(CharBuffer target) throws IOException {
     if (target == this) {

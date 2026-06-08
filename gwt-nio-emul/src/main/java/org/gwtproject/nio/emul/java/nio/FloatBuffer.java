@@ -482,8 +482,11 @@ public abstract class FloatBuffer extends Buffer implements Comparable<FloatBuff
   }
 
   public FloatBuffer get(int index, float[] dst, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > dst.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > dst.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -497,8 +500,11 @@ public abstract class FloatBuffer extends Buffer implements Comparable<FloatBuff
   }
 
   public FloatBuffer put(int index, float[] src, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -511,8 +517,11 @@ public abstract class FloatBuffer extends Buffer implements Comparable<FloatBuff
     if (src == this) {
       throw new IllegalArgumentException();
     }
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.limit() - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.limit() - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -552,17 +561,37 @@ public abstract class FloatBuffer extends Buffer implements Comparable<FloatBuff
   }
 
   @Override
-  public FloatBuffer clear() { return (FloatBuffer) super.clear(); }
+  public FloatBuffer clear() {
+    return (FloatBuffer) super.clear();
+  }
+
   @Override
-  public FloatBuffer flip() { return (FloatBuffer) super.flip(); }
+  public FloatBuffer flip() {
+    return (FloatBuffer) super.flip();
+  }
+
   @Override
-  public FloatBuffer limit(int newLimit) { return (FloatBuffer) super.limit(newLimit); }
+  public FloatBuffer limit(int newLimit) {
+    return (FloatBuffer) super.limit(newLimit);
+  }
+
   @Override
-  public FloatBuffer mark() { return (FloatBuffer) super.mark(); }
+  public FloatBuffer mark() {
+    return (FloatBuffer) super.mark();
+  }
+
   @Override
-  public FloatBuffer position(int newPosition) { return (FloatBuffer) super.position(newPosition); }
+  public FloatBuffer position(int newPosition) {
+    return (FloatBuffer) super.position(newPosition);
+  }
+
   @Override
-  public FloatBuffer reset() { return (FloatBuffer) super.reset(); }
+  public FloatBuffer reset() {
+    return (FloatBuffer) super.reset();
+  }
+
   @Override
-  public FloatBuffer rewind() { return (FloatBuffer) super.rewind(); }
+  public FloatBuffer rewind() {
+    return (FloatBuffer) super.rewind();
+  }
 }

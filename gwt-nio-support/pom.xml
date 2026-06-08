@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -8,17 +9,17 @@
         <version>1.6</version>
     </parent>
 
-    <artifactId>gwt-nio</artifactId>
+    <artifactId>gwt-nio-support</artifactId>
     <packaging>jar</packaging>
 
-    <name>GWT NIO</name>
-    <description>GWT NIO</description>
+    <name>GWT/J2CL compatible NIO support</name>
+    <description>GWT/J2CL compatible NIO support</description>
+
 
     <dependencies>
         <dependency>
-            <groupId>org.treblereel.gwt.nio</groupId>
-            <artifactId>gwt-nio-emul</artifactId>
-            <version>${project.version}</version>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-core</artifactId>
         </dependency>
     </dependencies>
 
@@ -36,4 +37,5 @@
             </resource>
         </resources>
     </build>
+
 </project>

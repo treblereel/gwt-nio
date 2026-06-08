@@ -17,8 +17,6 @@
 
 package java.nio;
 
-import elemental2.core.ArrayBuffer;
-
 /**
  * HeapByteBuffer, ReadWriteHeapByteBuffer and ReadOnlyHeapByteBuffer compose the implementation of
  * array based byte buffers.
@@ -28,12 +26,11 @@ import elemental2.core.ArrayBuffer;
  *
  * <p>This class is marked final for runtime performance.
  */
-final class DirectReadOnlyByteBuffer extends DirectByteBuffer {
+final class ReadOnlyHeapByteBuffer extends HeapByteBuffer {
 
-  static DirectReadOnlyByteBuffer copy(DirectByteBuffer other, int markOfOther) {
-    DirectReadOnlyByteBuffer buf =
-        new DirectReadOnlyByteBuffer(
-            other.byteArray.buffer, other.capacity(), other.byteArray.byteOffset);
+  static ReadOnlyHeapByteBuffer copy(HeapByteBuffer other, int markOfOther) {
+    ReadOnlyHeapByteBuffer buf =
+        new ReadOnlyHeapByteBuffer(other.backingArray, other.capacity(), other.offset);
     buf.limit = other.limit();
     buf.position = other.position();
     buf.mark = markOfOther;
@@ -41,7 +38,7 @@ final class DirectReadOnlyByteBuffer extends DirectByteBuffer {
     return buf;
   }
 
-  DirectReadOnlyByteBuffer(ArrayBuffer backingArray, int capacity, int arrayOffset) {
+  ReadOnlyHeapByteBuffer(byte[] backingArray, int capacity, int arrayOffset) {
     super(backingArray, capacity, arrayOffset);
   }
 
@@ -71,22 +68,6 @@ final class DirectReadOnlyByteBuffer extends DirectByteBuffer {
 
   protected boolean protectedHasArray() {
     return false;
-  }
-
-  public FloatBuffer asFloatBuffer() {
-    return DirectReadOnlyFloatBufferAdapter.wrap(this);
-  }
-
-  public IntBuffer asIntBuffer() {
-    return order() == ByteOrder.nativeOrder()
-        ? DirectReadOnlyIntBufferAdapter.wrap(this)
-        : super.asIntBuffer();
-  }
-
-  public ShortBuffer asShortBuffer() {
-    return order() == ByteOrder.nativeOrder()
-        ? DirectReadOnlyShortBufferAdapter.wrap(this)
-        : super.asShortBuffer();
   }
 
   public ByteBuffer put(byte b) {
@@ -146,9 +127,8 @@ final class DirectReadOnlyByteBuffer extends DirectByteBuffer {
   }
 
   public ByteBuffer slice() {
-    DirectReadOnlyByteBuffer slice =
-        new DirectReadOnlyByteBuffer(
-            byteArray.buffer, remaining(), byteArray.byteOffset + position);
+    ReadOnlyHeapByteBuffer slice =
+        new ReadOnlyHeapByteBuffer(backingArray, remaining(), offset + position);
     slice.order = order;
     return slice;
   }
@@ -157,9 +137,7 @@ final class DirectReadOnlyByteBuffer extends DirectByteBuffer {
     if (index < 0 || length < 0 || index + length > limit) {
       throw new IndexOutOfBoundsException();
     }
-    DirectReadOnlyByteBuffer slice =
-        new DirectReadOnlyByteBuffer(
-            byteArray.buffer, length, byteArray.byteOffset + index);
+    ReadOnlyHeapByteBuffer slice = new ReadOnlyHeapByteBuffer(backingArray, length, offset + index);
     slice.order = order;
     return slice;
   }

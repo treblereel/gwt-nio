@@ -17,6 +17,7 @@
 package java.nio;
 
 import elemental2.core.ArrayBuffer;
+import org.gwtproject.nio.Numbers;
 
 /**
  * DirectByteBuffer, DirectReadWriteByteBuffer and DirectReadOnlyByteBuffer compose the
@@ -229,8 +230,7 @@ public final class DirectReadWriteByteBuffer extends DirectByteBuffer {
       throw new IndexOutOfBoundsException();
     }
     DirectReadWriteByteBuffer slice =
-        new DirectReadWriteByteBuffer(
-            byteArray.buffer, length, byteArray.byteOffset + index);
+        new DirectReadWriteByteBuffer(byteArray.buffer, length, byteArray.byteOffset + index);
     slice.order = order;
     return slice;
   }

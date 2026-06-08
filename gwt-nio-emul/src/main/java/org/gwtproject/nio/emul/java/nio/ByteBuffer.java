@@ -924,8 +924,11 @@ public abstract class ByteBuffer extends Buffer
   }
 
   public ByteBuffer get(int index, byte[] dst, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > dst.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > dst.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -939,8 +942,11 @@ public abstract class ByteBuffer extends Buffer
   }
 
   public ByteBuffer put(int index, byte[] src, int offset, int length) {
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.length - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.length - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -953,8 +959,11 @@ public abstract class ByteBuffer extends Buffer
     if (src == this) {
       throw new IllegalArgumentException();
     }
-    if (index < 0 || offset < 0 || length < 0
-        || length > src.limit() - offset || index + length > limit()) {
+    if (index < 0
+        || offset < 0
+        || length < 0
+        || length > src.limit() - offset
+        || index + length > limit()) {
       throw new IndexOutOfBoundsException();
     }
     for (int i = 0; i < length; i++) {
@@ -994,25 +1003,39 @@ public abstract class ByteBuffer extends Buffer
   }
 
   @Override
-  public ByteBuffer clear() { return (ByteBuffer) super.clear(); }
+  public ByteBuffer clear() {
+    return (ByteBuffer) super.clear();
+  }
 
   @Override
-  public ByteBuffer flip() { return (ByteBuffer) super.flip(); }
+  public ByteBuffer flip() {
+    return (ByteBuffer) super.flip();
+  }
 
   @Override
-  public ByteBuffer limit(int newLimit) { return (ByteBuffer) super.limit(newLimit); }
+  public ByteBuffer limit(int newLimit) {
+    return (ByteBuffer) super.limit(newLimit);
+  }
 
   @Override
-  public ByteBuffer mark() { return (ByteBuffer) super.mark(); }
+  public ByteBuffer mark() {
+    return (ByteBuffer) super.mark();
+  }
 
   @Override
-  public ByteBuffer position(int newPosition) { return (ByteBuffer) super.position(newPosition); }
+  public ByteBuffer position(int newPosition) {
+    return (ByteBuffer) super.position(newPosition);
+  }
 
   @Override
-  public ByteBuffer reset() { return (ByteBuffer) super.reset(); }
+  public ByteBuffer reset() {
+    return (ByteBuffer) super.reset();
+  }
 
   @Override
-  public ByteBuffer rewind() { return (ByteBuffer) super.rewind(); }
+  public ByteBuffer rewind() {
+    return (ByteBuffer) super.rewind();
+  }
 
   public ByteBuffer stringToByteBuffer(String s) {
     return new java.nio.StringByteBuffer(s);

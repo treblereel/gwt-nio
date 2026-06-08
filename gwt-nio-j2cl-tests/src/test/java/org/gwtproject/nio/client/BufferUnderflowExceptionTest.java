@@ -26,7 +26,9 @@ import org.junit.Test;
 @J2clTestInput(BufferUnderflowExceptionTest.class)
 public class BufferUnderflowExceptionTest {
 
-  /** @tests {@link BufferUnderflowException#BufferUnderflowException()} */
+  /**
+   * @tests {@link BufferUnderflowException#BufferUnderflowException()}
+   */
   @Test
   public void test_Constructor() {
     BufferUnderflowException exception = new BufferUnderflowException();
