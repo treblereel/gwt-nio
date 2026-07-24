@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     steps:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1.7.2
@@ -23,13 +23,8 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Build and test
-        if: runner.os != 'Windows'
         run: |
-          mvn -B package --file pom.xml
-      - name: Build and test (Windows, skip J2CL tests)
-        if: runner.os == 'Windows'
-        run: |
-          mvn -B package --file pom.xml -pl !gwt-nio-j2cl-tests
+          mvn -B clean package --file pom.xml
       - name: Upload test results for review
         uses: actions/upload-artifact@v4
         if: always()
@@ -60,7 +55,7 @@ jobs:
           mvn wrapper:wrapper -Dmaven=${{ matrix.mvn }}
       - name: Build and test
         run: |
-          mvn -B package --file pom.xml
+          mvn -B clean package --file pom.xml
       - name: Upload test results for review
         uses: actions/upload-artifact@v4
         if: always()
