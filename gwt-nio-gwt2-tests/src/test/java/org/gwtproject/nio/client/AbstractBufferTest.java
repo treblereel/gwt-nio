@@ -275,6 +275,54 @@ public abstract class AbstractBufferTest extends GWTTestCase {
     baseBuf.position(oldPosition);
   }
 
+  public void testDuplicate() {
+    int oldPosition = baseBuf.position();
+    int oldLimit = baseBuf.limit();
+
+    Buffer dup = baseBuf.duplicate();
+    assertNotNull(dup);
+    assertNotSame(baseBuf, dup);
+    assertEquals(baseBuf.position(), dup.position());
+    assertEquals(baseBuf.limit(), dup.limit());
+    assertEquals(baseBuf.capacity(), dup.capacity());
+    assertEquals(baseBuf.isReadOnly(), dup.isReadOnly());
+
+    dup.position(0);
+    assertEquals(oldPosition, baseBuf.position());
+
+    dup.limit(dup.capacity());
+    assertEquals(oldLimit, baseBuf.limit());
+
+    baseBuf.limit(oldLimit);
+    baseBuf.position(oldPosition);
+  }
+
+  public void testSlice() {
+    int oldPosition = baseBuf.position();
+    int oldLimit = baseBuf.limit();
+
+    baseBuf.position(1);
+    Buffer slice = baseBuf.slice();
+    assertNotNull(slice);
+    assertEquals(0, slice.position());
+    assertEquals(baseBuf.remaining(), slice.limit());
+    assertEquals(baseBuf.remaining(), slice.capacity());
+    assertEquals(baseBuf.isReadOnly(), slice.isReadOnly());
+
+    try {
+      slice.reset();
+      fail("Should throw InvalidMarkException");
+    } catch (InvalidMarkException e) {
+      // expected
+    }
+
+    slice.position(slice.limit());
+    assertEquals(1, baseBuf.position());
+
+    baseBuf.limit(oldLimit);
+    baseBuf.position(oldPosition);
+  }
+
   public void testRewind() {
     // save state
     int oldPosition = baseBuf.position();

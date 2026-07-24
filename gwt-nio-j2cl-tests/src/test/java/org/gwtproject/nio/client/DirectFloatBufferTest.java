@@ -20,13 +20,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import com.google.j2cl.junit.apt.J2clTestInput;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import org.junit.Before;
 import org.junit.Test;
 
-// TODO, some tests fail but work in gwt2
-// @J2clTestInput(DirectFloatBufferTest.class)
+@J2clTestInput(DirectFloatBufferTest.class)
 public class DirectFloatBufferTest extends FloatBufferTest {
 
   @Before

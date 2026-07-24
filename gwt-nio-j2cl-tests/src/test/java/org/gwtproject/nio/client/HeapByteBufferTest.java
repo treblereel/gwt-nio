@@ -24,7 +24,9 @@ import org.junit.Test;
 @J2clTestInput(HeapByteBufferTest.class)
 public class HeapByteBufferTest extends ByteBufferTest {
 
-  /** @tests java.nio.ByteBuffer#allocate(int) */
+  /**
+   * @tests java.nio.ByteBuffer#allocate(int)
+   */
   @Test
   public void testAllocatedByteBuffer_IllegalArg() {
     try {

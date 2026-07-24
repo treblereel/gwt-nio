@@ -67,7 +67,9 @@ public class DirectByteBufferTest extends ByteBufferTest {
     assertTrue(buf.isDirect());
   }
 
-  /** @tests java.nio.ByteBuffer#allocateDirect(int) */
+  /**
+   * @tests java.nio.ByteBuffer#allocateDirect(int)
+   */
   @Test
   public void testAllocatedByteBuffer_IllegalArg() {
     try {

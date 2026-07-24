@@ -1760,7 +1760,9 @@ public class ByteBufferTest extends AbstractBufferTest {
     assertEquals(Short.MIN_VALUE, buf.getShort(0));
   }
 
-  /** @tests java.nio.ByteBuffer.wrap(byte[], int, int) */
+  /**
+   * @tests java.nio.ByteBuffer.wrap(byte[], int, int)
+   */
 
   /*
    * test for method static ByteBuffer wrap(byte[] array)

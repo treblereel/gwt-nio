@@ -22,7 +22,9 @@ import java.nio.BufferUnderflowException;
 /** Tests for BufferUnderflowException */
 public class BufferUnderflowExceptionTest extends GWTTestCase {
 
-  /** @tests {@link java.nio.BufferUnderflowException#BufferUnderflowException()} */
+  /**
+   * @tests {@link java.nio.BufferUnderflowException#BufferUnderflowException()}
+   */
   public void test_Constructor() {
     BufferUnderflowException exception = new BufferUnderflowException();
     assertNull(exception.getMessage());

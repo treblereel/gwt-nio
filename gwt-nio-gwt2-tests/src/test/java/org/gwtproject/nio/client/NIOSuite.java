@@ -3,7 +3,9 @@ package org.gwtproject.nio.client;
 import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.Test;
 
-/** @author Dmitrii Tikhomirov Created by treblereel 5/5/20 */
+/**
+ * @author Dmitrii Tikhomirov Created by treblereel 5/5/20
+ */
 public class NIOSuite {
 
   public static Test suite() {
@@ -20,7 +22,8 @@ public class NIOSuite {
     suite.addTestSuite(DirectDoubleBufferTest.class);
     // suite.addTestSuite(DirectFloatBufferTest.class); //TODO
     suite.addTestSuite(DirectIntBufferTest.class);
-    suite.addTestSuite(DirectIntBufferTest.class);
+    suite.addTestSuite(DirectLongBufferTest.class);
+    suite.addTestSuite(DirectShortBufferTest.class);
     suite.addTestSuite(DoubleBufferTest.class);
     suite.addTestSuite(FloatBufferTest.class);
     suite.addTestSuite(IntBufferTest.class);

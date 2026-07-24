@@ -19,7 +19,9 @@ import java.nio.ByteBuffer;
 
 public class HeapByteBufferTest extends ByteBufferTest {
 
-  /** @tests java.nio.ByteBuffer#allocate(int) */
+  /**
+   * @tests java.nio.ByteBuffer#allocate(int)
+   */
   public void testAllocatedByteBuffer_IllegalArg() {
     try {
       ByteBuffer.allocate(-1);
