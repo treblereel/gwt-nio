@@ -1,5 +1,5 @@
 [![GitHub license](https://img.shields.io/github/license/treblereel/gwt-nio)](https://github.com/treblereel/gwt-nio/blob/main/LICENSE)
-![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/org.treblereel.gwt.nio/gwt-nio?server=https%3A%2F%2Foss.sonatype.org&style=plastic)
+![Maven Central](https://img.shields.io/maven-central/v/org.treblereel.gwt.nio/gwt-nio?style=plastic)
 
 # GWT/J2CL emulation for `java.nio` packages
 
