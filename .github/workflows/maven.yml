@@ -23,8 +23,13 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Build and test
+        if: runner.os != 'Windows'
         run: |
           mvn -B package --file pom.xml
+      - name: Build and test (Windows, skip J2CL tests)
+        if: runner.os == 'Windows'
+        run: |
+          mvn -B package --file pom.xml -pl !gwt-nio-j2cl-tests
       - name: Upload test results for review
         uses: actions/upload-artifact@v4
         if: always()
